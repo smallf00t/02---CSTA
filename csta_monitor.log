@@ -1,0 +1,353 @@
+2025-03-01 09:56:02,998 - INFO - Démarrage de l'écouteur CSTA pour le poste 29707 sur le PABX 10.134.100.13
+2025-03-01 09:56:24,042 - ERROR - Erreur de connexion au PABX: [WinError 10060] Une tentative de connexion a échoué car le parti connecté n’a pas répondu convenablement au-delà d’une certaine durée ou une connexion établie a échoué car l’hôte de connexion n’a pas répondu
+2025-03-01 09:56:24,044 - INFO - Tentative de reconnexion dans 10 secondes...
+2025-03-01 09:56:55,107 - ERROR - Erreur de connexion au PABX: [WinError 10060] Une tentative de connexion a échoué car le parti connecté n’a pas répondu convenablement au-delà d’une certaine durée ou une connexion établie a échoué car l’hôte de connexion n’a pas répondu
+2025-03-01 09:56:55,108 - INFO - Tentative de reconnexion dans 10 secondes...
+2025-03-01 09:57:26,141 - ERROR - Erreur de connexion au PABX: [WinError 10060] Une tentative de connexion a échoué car le parti connecté n’a pas répondu convenablement au-delà d’une certaine durée ou une connexion établie a échoué car l’hôte de connexion n’a pas répondu
+2025-03-01 09:57:26,143 - INFO - Tentative de reconnexion dans 10 secondes...
+2025-03-01 09:57:57,173 - ERROR - Erreur de connexion au PABX: [WinError 10060] Une tentative de connexion a échoué car le parti connecté n’a pas répondu convenablement au-delà d’une certaine durée ou une connexion établie a échoué car l’hôte de connexion n’a pas répondu
+2025-03-01 09:57:57,173 - INFO - Tentative de reconnexion dans 10 secondes...
+2025-03-01 09:58:28,225 - ERROR - Erreur de connexion au PABX: [WinError 10060] Une tentative de connexion a échoué car le parti connecté n’a pas répondu convenablement au-delà d’une certaine durée ou une connexion établie a échoué car l’hôte de connexion n’a pas répondu
+2025-03-01 09:58:28,225 - INFO - Tentative de reconnexion dans 10 secondes...
+2025-03-01 09:58:59,264 - ERROR - Erreur de connexion au PABX: [WinError 10060] Une tentative de connexion a échoué car le parti connecté n’a pas répondu convenablement au-delà d’une certaine durée ou une connexion établie a échoué car l’hôte de connexion n’a pas répondu
+2025-03-01 09:58:59,265 - INFO - Tentative de reconnexion dans 10 secondes...
+2025-03-01 09:59:30,291 - ERROR - Erreur de connexion au PABX: [WinError 10060] Une tentative de connexion a échoué car le parti connecté n’a pas répondu convenablement au-delà d’une certaine durée ou une connexion établie a échoué car l’hôte de connexion n’a pas répondu
+2025-03-01 09:59:30,291 - INFO - Tentative de reconnexion dans 10 secondes...
+2025-03-01 10:00:01,328 - INFO - Programme arrêté par l'utilisateur
+2025-03-01 10:00:07,935 - INFO - Démarrage de l'écouteur CSTA pour le poste 29707 sur le PABX 10.134.3.13
+2025-03-01 10:00:07,957 - INFO - Connexion établie avec le PABX 10.134.3.13:2555
+2025-03-01 10:00:07,957 - INFO - Envoi de l'identification de l'application
+2025-03-01 10:00:09,070 - INFO - Démarrage de la supervision du poste 29707
+2025-03-01 10:00:10,584 - INFO - En attente d'événements CSTA...
+2025-03-01 10:00:40,718 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:40,819 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:40,920 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:41,022 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:41,123 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:41,224 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:41,324 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:41,425 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:41,526 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:41,627 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:41,727 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:41,828 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:41,930 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:42,032 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:42,133 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:42,234 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:42,336 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:42,438 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:42,539 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:42,640 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:42,742 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:42,843 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:42,944 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:43,046 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:43,147 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:43,248 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:43,349 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:43,451 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:43,552 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:43,653 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:43,755 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:43,855 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:43,956 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:44,057 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:44,158 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:44,259 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:44,360 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:44,461 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:44,563 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:44,664 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:44,766 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:44,867 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:44,968 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:45,069 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:45,170 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:45,271 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:45,373 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:45,473 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:45,574 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:45,675 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:45,777 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:45,878 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:45,979 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:46,079 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:46,180 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:46,281 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:46,383 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:46,485 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:46,587 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:46,689 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:46,790 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:46,891 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:46,992 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:47,093 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:47,194 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:47,295 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:47,395 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:47,497 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:47,597 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:47,698 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:47,799 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:47,899 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:48,000 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:48,101 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:48,202 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:48,302 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:48,404 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:48,506 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:48,608 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:48,710 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:48,811 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:48,912 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:49,013 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:49,114 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:49,215 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:49,316 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:49,417 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:49,519 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:49,620 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:49,721 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:49,822 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:49,923 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:50,023 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:50,124 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:50,226 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:50,327 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:50,427 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:50,528 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:50,629 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:50,730 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:50,832 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:50,934 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:51,035 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:51,136 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:51,237 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:51,338 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:51,439 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:51,541 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:51,642 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:51,744 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:51,846 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:51,947 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:52,049 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:52,151 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:52,251 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:52,352 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:52,453 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:52,555 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:52,655 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:52,757 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:52,858 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:52,959 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:53,061 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:53,163 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:53,264 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:53,365 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:53,467 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:53,569 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:53,671 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:53,772 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:53,874 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:53,974 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:54,077 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:54,178 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:54,279 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:54,380 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:54,482 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:54,583 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:54,684 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:54,787 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:54,888 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:54,989 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:55,091 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:55,192 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:55,293 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:55,394 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:55,495 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:55,596 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:55,698 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:55,800 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:55,901 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:56,002 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:56,104 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:56,205 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:56,306 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:56,407 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:56,509 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:56,611 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:56,711 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:56,812 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:56,914 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:57,015 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:57,116 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:57,217 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:57,318 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:57,419 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:57,521 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:57,623 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:57,724 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:57,825 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:57,926 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:58,027 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:58,129 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:58,230 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:58,331 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:58,432 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:58,533 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:58,634 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:58,735 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:58,837 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:58,938 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:59,040 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:59,141 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:59,243 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:59,344 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:59,445 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:59,547 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:59,648 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:59,750 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:59,851 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:00:59,951 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:00,052 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:00,153 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:00,253 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:00,354 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:00,455 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:00,556 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:00,656 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:00,758 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:00,859 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:00,960 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:01,061 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:01,162 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:01,264 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:01,365 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:01,465 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:01,565 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:01,666 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:01,767 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:01,867 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:01,968 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:02,069 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:02,169 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:02,270 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:02,371 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:02,471 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:02,572 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:02,672 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:02,773 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:02,874 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:02,975 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:03,078 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:03,180 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:03,281 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:03,382 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:03,482 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:03,583 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:03,684 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:03,785 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:03,886 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:03,987 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:04,088 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:04,189 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:04,289 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:04,390 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:04,490 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:04,591 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:04,692 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:04,792 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:04,893 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:04,993 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:05,094 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:05,195 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:05,297 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:05,398 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:05,500 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:05,601 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:05,702 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:05,803 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:05,904 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:06,005 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:06,105 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:06,206 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:06,307 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:06,408 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:06,509 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:06,610 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:06,711 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:06,812 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:06,912 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:07,013 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:07,114 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:07,215 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:07,316 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:07,416 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:07,517 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:07,619 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:07,720 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:07,821 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:07,922 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:08,022 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:08,123 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:08,224 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:08,325 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:08,426 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:08,528 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:08,629 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:08,730 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:08,831 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:08,931 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:09,032 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:09,133 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:09,233 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:09,334 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:09,435 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:09,537 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:09,638 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:09,739 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:09,841 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:09,941 - ERROR - Erreur lors de la réception des données: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:01:09,967 - INFO - Programme arrêté par l'utilisateur
+2025-03-01 10:04:00,447 - INFO - Démarrage de l'écouteur CSTA pour le poste 29707 sur le PABX 10.134.3.13
+2025-03-01 10:04:00,492 - INFO - Connexion établie avec le PABX 10.134.3.13:2555
+2025-03-01 10:04:00,493 - INFO - Envoi de l'identification de l'application
+2025-03-01 10:04:01,601 - INFO - Démarrage de la supervision du poste 29707
+2025-03-01 10:04:03,111 - INFO - En attente d'événements CSTA...
+2025-03-01 10:04:43,291 - WARNING - Connexion interrompue pendant la réception: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:04:43,393 - WARNING - Connexion interrompue pendant la réception: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:04:43,494 - WARNING - Connexion interrompue pendant la réception: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:04:43,595 - WARNING - Connexion interrompue pendant la réception: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:04:43,696 - WARNING - Connexion interrompue pendant la réception: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:04:43,798 - WARNING - Connexion interrompue pendant la réception: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:04:43,899 - WARNING - Connexion interrompue pendant la réception: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:04:44,001 - WARNING - Connexion interrompue pendant la réception: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:04:44,102 - WARNING - Connexion interrompue pendant la réception: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:04:44,204 - WARNING - Connexion interrompue pendant la réception: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:04:44,305 - WARNING - Connexion interrompue pendant la réception: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:04:44,407 - WARNING - Connexion interrompue pendant la réception: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:04:44,509 - WARNING - Connexion interrompue pendant la réception: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:04:44,610 - WARNING - Connexion interrompue pendant la réception: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:04:44,711 - WARNING - Connexion interrompue pendant la réception: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:04:44,813 - WARNING - Connexion interrompue pendant la réception: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:04:44,914 - WARNING - Connexion interrompue pendant la réception: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:04:45,015 - WARNING - Connexion interrompue pendant la réception: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:04:45,117 - WARNING - Connexion interrompue pendant la réception: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:04:45,219 - WARNING - Connexion interrompue pendant la réception: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:04:45,321 - WARNING - Connexion interrompue pendant la réception: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:04:45,423 - WARNING - Connexion interrompue pendant la réception: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:04:45,524 - WARNING - Connexion interrompue pendant la réception: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:04:45,626 - WARNING - Connexion interrompue pendant la réception: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:04:45,727 - WARNING - Connexion interrompue pendant la réception: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:04:45,828 - WARNING - Connexion interrompue pendant la réception: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:04:45,928 - WARNING - Connexion interrompue pendant la réception: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:04:46,029 - WARNING - Connexion interrompue pendant la réception: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:04:46,130 - WARNING - Connexion interrompue pendant la réception: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:04:46,230 - WARNING - Connexion interrompue pendant la réception: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:04:46,331 - WARNING - Connexion interrompue pendant la réception: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:04:46,433 - WARNING - Connexion interrompue pendant la réception: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:04:46,535 - WARNING - Connexion interrompue pendant la réception: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:04:46,636 - WARNING - Connexion interrompue pendant la réception: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:04:46,738 - WARNING - Connexion interrompue pendant la réception: [WinError 10053] Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+2025-03-01 10:04:46,836 - INFO - Programme arrêté par l'utilisateur
