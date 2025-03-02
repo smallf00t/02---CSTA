@@ -13,27 +13,42 @@ import argparse
 from datetime import datetime
 import paho.mqtt.client as mqtt
 
-# Ajout du parser d'arguments pour --printLog
+# Ajout du parser d'arguments pour --printLog et --trace
 parser = argparse.ArgumentParser(description='CSTA Monitor pour OXE PBX')
 parser.add_argument('--printLog', action='store_true', help='Activer l\'affichage des logs dans la console')
+parser.add_argument('--trace', action='store_true', help='Activer l\'écriture des logs dans le fichier csta_monitor.log')
 args = parser.parse_args()
 
-# Configuration du logging
+# Configuration du logging - Toujours avoir au moins un handler pour le fonctionnement interne
+handlers = []
+if args.trace:
+    handlers.append(logging.FileHandler("csta_monitor.log"))
+if args.printLog:
+    handlers.append(logging.StreamHandler(sys.stdout))
+if not handlers:  
+    # Si aucun argument n'est fourni, utiliser un NullHandler pour les messages
+    # mais garder un FileHandler minimal pour les erreurs critiques et les fonctions internes
+    null_handler = logging.NullHandler()
+    null_handler.setLevel(logging.INFO)  # Ignorer les messages INFO normaux
+    handlers.append(null_handler)
+    
+    # Créer un handler pour les erreurs critiques uniquement
+    error_handler = logging.FileHandler("csta_error.log")
+    error_handler.setLevel(logging.ERROR)  # Capturer uniquement ERROR et CRITICAL
+    handlers.append(error_handler)
+
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s',
-    handlers=[
-        logging.FileHandler("csta_monitor.log"),
-        logging.StreamHandler(sys.stdout) if args.printLog else logging.NullHandler()
-    ]
+    handlers=handlers
 )
 logger = logging.getLogger(__name__)
-
 class CSTAMonitor:
     def __init__(self, print_log=False):
         # Flag pour activer/désactiver les print
         self.print_log = print_log
-        
+
+    def __init__(self):
         # Configuration CSTA
         self.PABX_IP = "10.134.100.113"
         self.PABX_PORT = 2555
@@ -59,7 +74,7 @@ class CSTAMonitor:
         # Suivi des invocations
         self.last_invoke_id = 1
 
-        # Suivi des appels actifs
+            # Suivi des appels actifs
         self.active_calls = {}  # Dictionnaire pour suivre les appels par ID
     
     # --- MQTT Handling ---
@@ -519,6 +534,7 @@ class CSTAMonitor:
                 pass
         
         # Créer description textuelle de l'événement
+
         description = self.create_event_description(result)
         if description:
             result["description"] = description
@@ -721,3 +737,577 @@ class CSTAMonitor:
             return f"Échec de l'appel pour {device}, cause: {cause}"
             
         return None
+    
+    def decode_snapshot_response(self, hex_data, device):
+        """Décode la réponse d'un snapshot CSTA"""
+        result = {
+            "type": "SNAPSHOT_RESPONSE",
+            "device": device,
+            #"raw_data": hex_data,
+            "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+            "decoded": {
+                "message_type": "Unknown",
+                "invoke_id": None,
+                "result_code": None,
+                "device_id": None,
+                "device_info": {}
+            }
+        }
+        
+        # Vérifier le type de message (A2 pour les réponses)
+        if "A2" in hex_data[:10]:
+            result["decoded"]["message_type"] = "Response"
+        
+        # Extraire l'invoke ID (après 02 01)
+        idx = hex_data.find("02 01")
+        if idx != -1 and idx + 8 <= len(hex_data):
+            try:
+                invoke_id = int(hex_data[idx+6:idx+8], 16)
+                result["decoded"]["invoke_id"] = invoke_id
+            except ValueError:
+                pass
+        
+        # Extraire le code résultat (généralement après 02 01 XX 30)
+        idx = hex_data.find("30", idx+8)
+        if idx != -1 and idx + 12 <= len(hex_data):
+            next_idx = hex_data.find("02 01", idx)
+            if next_idx != -1 and next_idx + 8 <= len(hex_data):
+                try:
+                    result_code = int(hex_data[next_idx+6:next_idx+8], 16)
+                    result["decoded"]["result_code"] = result_code
+                    # 47 hex (71 décimal) indique généralement un succès
+                    if result_code == 71:
+                        result["decoded"]["result"] = "Success"
+                    else:
+                        result["decoded"]["result"] = f"Failure (code {result_code})"
+                except ValueError:
+                    pass
+        
+        # Extraire l'ID du périphérique (généralement après 55 04 01)
+        idx = hex_data.find("55 04 01")
+        if idx != -1 and idx + 14 <= len(hex_data):
+            try:
+                # Lire les 4 caractères après 55 04 01
+                device_id_hex = hex_data[idx+9:idx+14].replace(" ", "")
+                if len(device_id_hex) >= 4:
+                    device_id = int(device_id_hex, 16)
+                    result["decoded"]["device_id"] = device_id
+            except ValueError:
+                pass
+        
+        # Extraire les informations sur le périphérique
+        # Media Class (80 03 02 80 00 pour Voice)
+        idx = hex_data.find("80 03")
+        if idx != -1 and idx + 14 <= len(hex_data):
+            media_class_hex = hex_data[idx+6:idx+14].replace(" ", "")
+            if "028000" in media_class_hex:
+                result["decoded"]["device_info"]["media_class"] = "Voice"
+            elif "028001" in media_class_hex:
+                result["decoded"]["device_info"]["media_class"] = "Data"
+            else:
+                result["decoded"]["device_info"]["media_class"] = f"Unknown ({media_class_hex})"
+        
+        # Device Type (81 02)
+        idx = hex_data.find("81 02")
+        if idx != -1 and idx + 11 <= len(hex_data):
+            try:
+                type_hex = hex_data[idx+6:idx+11].replace(" ", "")
+                type_val = int(type_hex, 16)
+                result["decoded"]["device_info"]["device_type"] = type_val
+            except ValueError:
+                pass
+        
+        # Device Instance (82 02)
+        idx = hex_data.find("82 02")
+        if idx != -1 and idx + 11 <= len(hex_data):
+            try:
+                instance_hex = hex_data[idx+6:idx+11].replace(" ", "")
+                instance_val = int(instance_hex, 16)
+                result["decoded"]["device_info"]["device_instance"] = instance_val
+            except ValueError:
+                pass
+        
+        # Device Category (83 02)
+        idx = hex_data.find("83 02")
+        if idx != -1 and idx + 11 <= len(hex_data):
+            try:
+                category_hex = hex_data[idx+6:idx+11].replace(" ", "")
+                category_val = int(category_hex, 16)
+                result["decoded"]["device_info"]["device_category"] = category_val
+            except ValueError:
+                pass
+        
+        # Device Model (85 02)
+        idx = hex_data.find("85 02")
+        if idx != -1 and idx + 11 <= len(hex_data):
+            try:
+                model_hex = hex_data[idx+6:idx+11].replace(" ", "")
+                model_val = int(model_hex, 16)
+                result["decoded"]["device_info"]["device_model"] = model_val
+                
+                # Correspondance des modèles Alcatel courants
+                model_map = {
+                    366: "Alcatel IP Touch 4028",
+                    365: "Alcatel IP Touch 4018",
+                    364: "Alcatel IP Touch 4008",
+                    366: "Alcatel ALE 20"
+                }
+                if model_val in model_map:
+                    result["decoded"]["device_info"]["model_name"] = model_map[model_val]
+            except ValueError:
+                pass
+        
+        # Indicateur supplémentaire (84 01)
+        idx = hex_data.find("84 01")
+        if idx != -1 and idx + 8 <= len(hex_data):
+            try:
+                indicator = int(hex_data[idx+6:idx+8], 16)
+                result["decoded"]["device_info"]["additional_indicator"] = indicator
+            except ValueError:
+                pass
+        
+        return result
+
+    def update_call_history(self, event_info):
+        """Met à jour l'historique d'un appel avec un nouvel événement"""
+        if not event_info:
+            return
+        
+        # Obtenir l'ID de l'appel (call_id ou cross_ref_id)
+        call_id = event_info.get("call_id") or event_info.get("cross_ref_id")
+        if not call_id:
+            return  # Impossible de suivre sans ID d'appel
+        
+        # Timestamp actuel
+        timestamp = event_info.get("timestamp", datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+        
+        # Créer ou récupérer l'enregistrement d'appel
+        if call_id not in self.active_calls:
+            # Nouvel appel
+            self.active_calls[call_id] = {
+                "call_id": call_id,
+                "start_time": timestamp,
+                "events": [],
+                "status": "initiated"
+            }
+        
+        # Récupérer l'appel en cours
+        call = self.active_calls[call_id]
+        
+        # Ajouter l'événement à l'historique
+        call["events"].append({
+            "timestamp": timestamp,
+            "type": event_info.get("type", "UNKNOWN"),
+            "description": event_info.get("description", "")
+        })
+        
+        # Mettre à jour les informations sur l'appel selon le type d'événement
+        event_type = event_info.get("type", "")
+        
+        # Numéros appelant et appelé
+        if "calling_device" in event_info and not call.get("calling_number"):
+            call["calling_number"] = event_info["calling_device"]
+        
+        if "called_device" in event_info and not call.get("called_number"):
+            call["called_number"] = event_info["called_device"]
+        
+        # Extension interne si présente
+        if "device" in event_info:
+            if event_info["device"] in self.DEVICES_TO_MONITOR:
+                call["called_extension"] = event_info["device"]
+                call["direction"] = "entrant"
+            elif "calling_device" in event_info and event_info["calling_device"] in self.DEVICES_TO_MONITOR:
+                call["calling_extension"] = event_info["calling_device"]
+                call["direction"] = "sortant"
+        
+        # Gestion spécifique pour les événements ORIGINATED
+        if event_type == "ORIGINATED":
+            call["direction"] = "sortant"
+        
+        # Traiter les différents types d'événements
+        if event_type == "CALL_CLEARED":
+            call["status"] = "terminated"
+            call["end_time"] = timestamp
+            
+            # Calculer la durée si possible
+            if "start_time" in call:
+                try:
+                    start = datetime.strptime(call["start_time"], "%Y-%m-%d %H:%M:%S")
+                    end = datetime.strptime(timestamp, "%Y-%m-%d %H:%M:%S")
+                    call["duration"] = (end - start).total_seconds()
+                except Exception as e:
+                    logger.error(f"Erreur de calcul de durée: {e}")
+                    call["duration"] = 0
+            
+            # Journaliser et envoyer l'historique complet uniquement si la durée est > 0
+            if call.get("duration", 0) > 0:
+                self.log_call_history(call)
+                self.send_call_history_mqtt(call)
+            
+            # Nettoyer l'appel terminé
+            del self.active_calls[call_id]
+        
+        # ... (reste du code existant)
+        
+        return call
+            
+            # --- Connexion et surveillance ---
+
+    def run(self):
+        """Fonction principale exécutant la surveillance"""
+        logger.info(f"Démarrage de la surveillance CSTA pour les postes: {', '.join(self.DEVICES_TO_MONITOR)}")
+        
+        while True:
+            try:
+                # Initialiser MQTT
+                if not self.mqtt_client:
+                    self.mqtt_client = self.init_mqtt()
+                
+                # Établir la connexion au PABX
+                connection_result = self.connect_and_monitor()
+                
+                if connection_result:
+                    logger.info(f"Session terminée normalement, reconnexion dans {self.RECONNECT_DELAY} secondes")
+                else:
+                    logger.warning(f"Session terminée avec erreur, reconnexion dans {self.RECONNECT_DELAY} secondes")
+                
+                # Pause avant la reconnexion
+                time.sleep(self.RECONNECT_DELAY)
+                
+            except Exception as e:
+                logger.error(f"Erreur inattendue: {e}")
+                time.sleep(self.RECONNECT_DELAY)
+
+    def connect_and_monitor(self):
+        """Établit la connexion au PABX et commence la surveillance"""
+        client_sock = None
+        try:
+            # Créer et connecter le socket
+            client_sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            client_sock.settimeout(10)  # Timeout initial pour la connexion
+            
+            logger.info(f"Connexion au PABX {self.PABX_IP}:{self.PABX_PORT}...")
+            client_sock.connect((self.PABX_IP, self.PABX_PORT))
+            logger.info("Connexion établie avec succès")
+            
+            # Séquence d'initialisation
+            # 1. Identification
+            ident_cmd = b"\x42"
+            logger.info(f"Envoi commande d'identification: {self.bytes_to_hex(ident_cmd)}")
+            client_sock.sendall(ident_cmd)
+            response = client_sock.recv(1024)
+            logger.info(f"Réponse d'identification: {self.bytes_to_hex(response)}")
+            time.sleep(2)
+            
+            # 2. Établissement de la session
+            session_cmd = self.hex_to_bytes(
+                "00 46 60 44 80 02 07 80 A1 07 06 05 2B 0C 00 81 34 BE 35 "
+                "28 33 06 07 2B 0C 00 81 5A 81 48 A0 28 30 26 03 02 03 C0 "
+                "30 16 80 04 03 E7 B6 48 81 06 02 5F FD 03 FE A0 83 02 06 "
+                "C0 84 02 03 F0 30 08 82 02 03 D8 83 02 06 C0"
+            )
+            logger.info(f"Envoi commande de session")
+            client_sock.sendall(session_cmd)
+            response = client_sock.recv(1024)
+            logger.info(f"Réponse commande de session reçue: {len(self.bytes_to_hex(response))} octets")
+            time.sleep(2)
+            
+            # 3. Démarrer la surveillance pour chaque appareil
+            for device in self.DEVICES_TO_MONITOR:
+                # StartMonitor
+                mon_cmd = self.build_start_monitor_cmd(device)
+                logger.info(f"Envoi StartMonitor pour {device}")
+                client_sock.sendall(mon_cmd)
+                try:
+                    response = client_sock.recv(1024)
+                    hex_response = self.bytes_to_hex(response)
+                    logger.info(f"Réponse StartMonitor pour {device}: {hex_response}")
+                    
+                    # Même décodage que pour le snapshot puisqu'ils ont un format similaire
+                    monitor_info = self.decode_snapshot_response(hex_response, device)
+                    monitor_info["type"] = "START_MONITOR_RESPONSE"
+                    
+                    # Envoyer à MQTT
+                    self.send_mqtt_message(monitor_info)
+                except socket.timeout:
+                    logger.warning(f"Pas de réponse pour StartMonitor {device}")
+                time.sleep(2)
+                
+                # Snapshot
+                snap_cmd = self.build_snapshot_cmd(device)
+                logger.info(f"Envoi Snapshot pour {device}")
+                client_sock.sendall(snap_cmd)
+                try:
+                    response = client_sock.recv(1024)
+                    hex_response = self.bytes_to_hex(response)
+                    logger.info(f"Réponse Snapshot pour {device}: {hex_response}")
+                    
+                    # Decoder la réponse Snapshot
+                    snapshot_info = self.decode_snapshot_response(hex_response, device)
+                    
+                    # Envoyer à MQTT
+                    #self.send_mqtt_message(snapshot_info)
+                except socket.timeout:
+                    logger.warning(f"Pas de réponse pour Snapshot {device}")
+                time.sleep(2)
+            
+            # Passer en mode non-bloquant pour la boucle d'événements
+            client_sock.setblocking(False)
+            
+            # Variable pour le suivi du temps
+            last_keepalive = time.time()
+            
+            logger.info("Début de la surveillance des événements...")
+            
+            # Boucle principale de surveillance
+            while True:
+                current_time = time.time()
+                
+                # Envoyer un keepalive si nécessaire
+                if current_time - last_keepalive >= self.KEEPALIVE_INTERVAL:
+                    keepalive = self.build_keepalive_cmd()
+                    keepalive_hex = self.bytes_to_hex(keepalive)
+                    logger.info(f"Envoi keepalive: {keepalive_hex}")
+                    try:
+                        client_sock.sendall(keepalive)
+                        last_keepalive = current_time
+                        
+                        # Envoyer à MQTT
+                        self.send_mqtt_message({
+                            "type": "KEEPALIVE_SENT",
+                            "data": keepalive_hex,
+                            "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                        })
+                    except socket.error as e:
+                        logger.error(f"Erreur envoi keepalive: {e}")
+                        break
+                
+                # Vérifier s'il y a des données à recevoir
+                try:
+                    data = client_sock.recv(4096)
+                    if data:
+                        # Afficher les données reçues
+                        hex_data = self.bytes_to_hex(data)
+                        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                        if self.print_log:
+                            print(f"{timestamp} - RX: {hex_data}")
+                        logger.info(f"Données reçues: {hex_data}")
+                        
+                        # Pour le moment, traitons chaque message comme un seul message
+                        # Déterminer le type de message
+                        message_type = self.identify_message_type(hex_data)
+                        
+                        # Traiter selon le type de message
+                        if message_type == "KEEPALIVE_REQUEST":
+                            # Répondre au keepalive
+                            response = self.prepare_keepalive_response(data)
+                            if response:
+                                response_hex = self.bytes_to_hex(response)
+                                logger.info(f"Envoi réponse keepalive: {response_hex}")
+                                client_sock.sendall(response)
+                                
+                                # Note: Pas d'envoi MQTT pour les keepalive_response
+                        elif message_type == "CALL_EVENT":
+                            # Décoder l'événement d'appel
+                            event_info = self.decode_csta_event(hex_data)
+
+                            # Mettre à jour l'historique des appels
+                            self.update_call_history(event_info)
+                            
+                            # Convertir la structure en format JSON pour MQTT
+                            mqtt_payload = {
+                                "type": event_info.get("type", "UNKNOWN_EVENT"),
+                                "timestamp": timestamp,
+                                "csta_timestamp": event_info.get("csta_timestamp", ""),
+                                "call_id": event_info.get("call_id", ""),
+                                "cross_ref_id": event_info.get("cross_ref_id", ""),
+                                "devices": {}
+                            }
+                            
+                            # Ajouter les différents périphériques avec leur rôle
+                            device_keys = [
+                                ("device", "primary"), 
+                                ("calling_device", "calling"),
+                                ("called_device", "called"),
+                                ("holding_device", "holding"),
+                                ("retrieving_device", "retrieving"),
+                                ("transferring_device", "transferring"),
+                                ("transferred_to_device", "transferred_to"),
+                                ("diverted_to_device", "diverted_to")
+                            ]
+                            
+                            for key, role in device_keys:
+                                if key in event_info and event_info[key]:
+                                    mqtt_payload["devices"][role] = event_info[key]
+                            
+                            # Ajouter d'autres informations importantes
+                            if "cause" in event_info:
+                                mqtt_payload["cause"] = event_info["cause"]
+                            if "cause_code" in event_info:
+                                mqtt_payload["cause_code"] = event_info["cause_code"]
+                            if "connection_state_desc" in event_info:
+                                mqtt_payload["connection_state"] = event_info["connection_state_desc"]
+                            if "description" in event_info:
+                                mqtt_payload["description"] = event_info["description"]
+                            
+                            # Envoyer à MQTT
+                            self.send_mqtt_message(mqtt_payload)
+                            
+                            # Log détaillé de l'événement
+                            if "description" in event_info:
+                                logger.info(f"Événement: {event_info['type']} - {event_info['description']}")
+                            else:
+                                logger.info(f"Événement: {event_info['type']}")
+                                
+                            # Afficher les détails pour debugging
+                            if self.print_log:
+                                print(f"  {event_info.get('type', 'UNKNOWN')}")
+                            if self.print_log:
+                                print(f"    Call ID: {event_info.get('call_id', 'N/A')}")
+                            if self.print_log:
+                                print(f"    CrossRef: {event_info.get('cross_ref_id', 'N/A')}")
+                            for key, val in event_info.items():
+                                if key.endswith('device') and val:
+                                    if self.print_log:
+                                        print(f"    {key}: {val}")
+                        else:
+                            # Pour les autres types, envoyer les données brutes
+                            self.send_mqtt_message({
+                                "type": message_type,
+                                "timestamp": timestamp
+                            })
+                    else:
+                        # Connexion fermée par le serveur
+                        logger.warning("Connexion fermée par le serveur")
+                        break
+                    
+                except (socket.error, BlockingIOError):
+                    # Aucune donnée disponible, attendre un peu
+                    time.sleep(0.1)
+                
+                except Exception as e:
+                    logger.error(f"Erreur dans la boucle de surveillance: {e}")
+                    break
+            
+            # Fin de la session
+            logger.info("Fin de la session de surveillance")
+            return True
+            
+        except socket.error as e:
+            logger.error(f"Erreur de socket: {e}")
+            return False
+        
+        finally:
+            # Fermer le socket dans tous les cas
+            if client_sock:
+                try:
+                    client_sock.close()
+                    logger.info("Socket fermé")
+                except:
+                    pass
+
+    def signal_handler(self, sig, frame):
+        """Gestionnaire de signaux pour l'arrêt propre"""
+        logger.info(f"Signal {sig} reçu, arrêt en cours...")
+        
+        # Fermer la connexion MQTT
+        if self.mqtt_client:
+            try:
+                self.mqtt_client.loop_stop()
+                self.mqtt_client.disconnect()
+                logger.info("Connexion MQTT fermée")
+            except:
+                pass
+        
+        logger.info("Programme arrêté")
+        sys.exit(0)
+
+    def log_call_history(self, call):
+        """Affiche l'historique complet d'un appel dans les logs avec formatage amélioré."""
+        events_summary = []
+        for ev in call["events"]:
+            events_summary.append(f"{ev['timestamp']} - {ev['type']}")
+
+        summary = (
+            f"\n{'=' * 60}\n"
+            f"HISTORIQUE D'APPEL - ID: {call['call_id']}\n"
+            f"{'=' * 60}\n"
+            f"De: {call.get('calling_number', 'inconnu')}"
+        )
+        
+        if call.get('caller_name'):
+            summary += f" ({call['caller_name']})"
+        
+        summary += (
+            f"\nVers: {call.get('called_number', 'inconnu')}\n"
+        )
+        
+        if call.get('called_extension'):
+            summary += f"Extension interne: {call.get('called_extension')}\n"
+        
+        # Afficher la direction si disponible
+        if call.get('direction'):
+            summary += f"Direction: {call.get('direction').upper()}\n"
+            
+        summary += (
+            f"Début: {call.get('start_time', 'inconnu')}\n"
+            f"Fin: {call.get('end_time', 'inconnu')}\n"
+            f"Durée: {call.get('duration', 0)} secondes\n"
+            f"Statut final: {call.get('status', 'inconnu')}\n"
+        )
+        
+        # Ajouter des informations sur les transferts si disponibles
+        if any("transfer" in key for key in call.keys()):
+            summary += f"\n{'=' * 30} TRANSFERT {'=' * 30}\n"
+            for key, value in call.items():
+                if "transfer" in key:
+                    summary += f"{key}: {value}\n"
+        
+        # Ajouter des informations sur les mises en attente si disponibles
+        if "hold_time" in call:
+            summary += f"\n{'=' * 30} ATTENTE {'=' * 30}\n"
+            summary += f"Mise en attente: {call.get('hold_time')}\n"
+            if "retrieve_time" in call:
+                summary += f"Récupération: {call.get('retrieve_time')}\n"
+            if "last_hold_duration" in call:
+                summary += f"Durée d'attente: {call.get('last_hold_duration')} secondes\n"
+        
+        # Journal des événements
+        summary += (
+            f"\n{'=' * 30} ÉVÉNEMENTS ({len(events_summary)}) {'=' * 30}\n"
+            f"{chr(10).join(events_summary)}\n"
+            f"{'=' * 60}\n"
+        )
+        
+        logger.info(summary)
+
+
+      
+def main():
+    """Fonction principale"""
+    monitor = CSTAMonitor()
+
+    # Afficher les options de démarrage
+    log_status = []
+    if args.printLog:
+        log_status.append("logs console activés")
+    if args.trace:
+        log_status.append("logs fichier activés")
+    
+    status_message = "CSTA Monitor démarré"
+    if log_status:
+        status_message += f" ({', '.join(log_status)})"
+    
+    logger.info(status_message)
+    if args.printLog:
+        print(status_message)    
+    monitor.run()
+
+if __name__ == "__main__":
+    try:
+        main()
+    except KeyboardInterrupt:
+        logger.info("Programme arrêté par l'utilisateur")
+    except Exception as e:
+        logger.critical(f"Erreur fatale: {e}")
+        sys.exit(1)
