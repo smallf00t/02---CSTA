@@ -375,7 +375,8 @@ def connect_and_monitor():
                     start_time = time.time()
                     logger.info("Début de la surveillance des événements...")
                     
-                    while time.time() - start_time < SESSION_TIME:
+                    # while time.time() - start_time < SESSION_TIME:
+                    while True:
                         # Envoi périodique de keepalives
                         current_time = time.time()
                         if current_time - last_keepalive_time >= KEEPALIVE_INTERVAL:
