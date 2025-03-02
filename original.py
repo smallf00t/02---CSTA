@@ -10,6 +10,8 @@ import binascii
 import json
 import signal
 import argparse
+import json
+import os
 from datetime import datetime
 import paho.mqtt.client as mqtt
 
@@ -17,7 +19,9 @@ import paho.mqtt.client as mqtt
 parser = argparse.ArgumentParser(description='CSTA Monitor pour OXE PBX')
 parser.add_argument('--printLog', action='store_true', help='Activer l\'affichage des logs dans la console')
 parser.add_argument('--trace', action='store_true', help='Activer l\'écriture des logs dans le fichier csta_monitor.log')
+parser.add_argument('--config', default='config.json', help='Chemin vers le fichier de configuration (par défaut: config.json)')
 args = parser.parse_args()
+
 
 # Configuration du logging - Toujours avoir au moins un handler pour le fonctionnement interne
 handlers = []
@@ -44,27 +48,113 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 class CSTAMonitor:
-    def __init__(self, print_log=False):
+
+    def __init__(self, print_log=False, config_file='config.json'):
+        """Initialise le CSTA Monitor avec les paramètres par défaut"""
         # Flag pour activer/désactiver les print
         self.print_log = print_log
-
-    def __init__(self):
-        # Configuration CSTA
+        
+        # Valeurs par défaut
         self.PABX_IP = "10.134.100.113"
         self.PABX_PORT = 2555
-        self.DEVICES_TO_MONITOR = [
-            "24001","24002", "24003", "24004", "24005", "24006",
-            "24007", "24120", "24151", "24152", "24153", "24738"
-        ]
-        self.RECONNECT_DELAY = 30      # secondes
-        self.KEEPALIVE_INTERVAL = 30   # secondes
-        
-        # Configuration MQTT
         self.MQTT_BROKER = "10.208.4.11"
         self.MQTT_PORT = 1883
         self.MQTT_TOPIC = "pabx/csta/monitoring"
         self.MQTT_USER = "smallfoot"
         self.MQTT_PASSWORD = "mdpsfi"
+        
+        # Liste par défaut des postes
+        default_devices = ["24001", "24002", "24003"]
+        self.DEVICES_TO_MONITOR = default_devices.copy()
+        
+        # Message d'erreur standard pour fichier manquant
+        config_error_msg = f"Erreur: Fichier de configuration {config_file} introuvable ou invalide. "
+        config_error_msg += "Veuillez créer un fichier JSON avec la structure suivante:\n"
+        config_error_msg += '{\n'
+        config_error_msg += '  "pabx": {\n'
+        config_error_msg += '    "ip": "10.134.100.113",\n'
+        config_error_msg += '    "port": 2555\n'
+        config_error_msg += '  },\n'
+        config_error_msg += '  "mqtt": {\n'
+        config_error_msg += '    "broker": "10.208.4.11",\n'
+        config_error_msg += '    "port": 1883,\n'
+        config_error_msg += '    "topic": "pabx/csta/monitoring",\n'
+        config_error_msg += '    "user": "smallfoot",\n'
+        config_error_msg += '    "password": "mdpsfi"\n'
+        config_error_msg += '  },\n'
+        config_error_msg += '  "devices": {\n'
+        config_error_msg += '    "nom_poste1": "123456",\n'
+        config_error_msg += '    "nom_poste2": "123457"\n'
+        config_error_msg += '  }\n'
+        config_error_msg += '}'
+        
+        # Charger la configuration depuis le fichier
+        config_loaded = False
+        try:
+            if os.path.exists(config_file):
+                with open(config_file, 'r') as f:
+                    config_data = json.load(f)
+                    
+                    # Extraire les informations du PABX
+                    if "pabx" in config_data:
+                        pabx_config = config_data["pabx"]
+                        self.PABX_IP = pabx_config.get("ip", self.PABX_IP)
+                        self.PABX_PORT = pabx_config.get("port", self.PABX_PORT)
+                    
+                    # Extraire les informations MQTT
+                    if "mqtt" in config_data:
+                        mqtt_config = config_data["mqtt"]
+                        self.MQTT_BROKER = mqtt_config.get("broker", self.MQTT_BROKER)
+                        self.MQTT_PORT = mqtt_config.get("port", self.MQTT_PORT)
+                        self.MQTT_TOPIC = mqtt_config.get("topic", self.MQTT_TOPIC)
+                        self.MQTT_USER = mqtt_config.get("user", self.MQTT_USER)
+                        self.MQTT_PASSWORD = mqtt_config.get("password", self.MQTT_PASSWORD)
+                    
+                    # Extraire la liste des postes
+                    if "devices" in config_data:
+                        self.DEVICES_TO_MONITOR = []
+                        for name, device_id in config_data["devices"].items():
+                            self.DEVICES_TO_MONITOR.append(str(device_id))
+                    
+                    config_loaded = True
+                    logger.info(f"Configuration chargée depuis {config_file}")
+                    logger.info(f"PABX: {self.PABX_IP}:{self.PABX_PORT}")
+                    logger.info(f"MQTT: {self.MQTT_BROKER}:{self.MQTT_PORT}")
+                    logger.info(f"Postes: {len(self.DEVICES_TO_MONITOR)} trouvés")
+                    
+                    if self.print_log:
+                        print(f"Configuration chargée depuis {config_file}")
+                        print(f"PABX: {self.PABX_IP}:{self.PABX_PORT}")
+                        print(f"MQTT: {self.MQTT_BROKER}:{self.MQTT_PORT}")
+                        print(f"Postes: {len(self.DEVICES_TO_MONITOR)} trouvés")
+            else:
+                # Fichier non trouvé - on affiche toujours le message d'erreur
+                logger.error(config_error_msg)
+                if self.print_log:
+                    print(config_error_msg)
+        except Exception as e:
+            error_msg = f"Erreur lors de la lecture du fichier de configuration: {e}"
+            logger.error(error_msg)
+            logger.error(config_error_msg)  # Toujours afficher le modèle
+            if self.print_log:
+                print(error_msg)
+                print(config_error_msg)  # Toujours afficher le modèle
+        
+        # Si la configuration n'a pas pu être chargée, indiquer l'utilisation des valeurs par défaut
+        if not config_loaded:
+            default_msg = f"Utilisation des paramètres par défaut:"
+            default_msg += f"\n- PABX: {self.PABX_IP}:{self.PABX_PORT}"
+            default_msg += f"\n- MQTT: {self.MQTT_BROKER}:{self.MQTT_PORT}"
+            default_msg += f"\n- Postes: {self.DEVICES_TO_MONITOR}"
+            
+            logger.warning(default_msg)
+            if self.print_log:
+                print(default_msg)
+        
+        # Reste du code __init__ inchangé
+        self.RECONNECT_DELAY = 30      # secondes
+        self.KEEPALIVE_INTERVAL = 30   # secondes
+        
         self.mqtt_client = None
         
         # Gestion des signaux
@@ -74,17 +164,25 @@ class CSTAMonitor:
         # Suivi des invocations
         self.last_invoke_id = 1
 
-            # Suivi des appels actifs
+        # Suivi des appels actifs
         self.active_calls = {}  # Dictionnaire pour suivre les appels par ID
+
     
-    # --- MQTT Handling ---
+        # --- MQTT Handling ---
+   
     def init_mqtt(self):
         """Initialise la connexion MQTT"""
         try:
             client = mqtt.Client()
             client.username_pw_set(self.MQTT_USER, self.MQTT_PASSWORD)
             client.on_connect = self.on_mqtt_connect
+            client.on_message = self.on_mqtt_message  # Ajouter le callback pour les messages
             client.connect(self.MQTT_BROKER, self.MQTT_PORT, 60)
+            
+            # S'abonner au topic de pilotage
+            client.subscribe(f"{self.MQTT_TOPIC}/pilote")
+            logger.info(f"Abonnement au topic de pilotage: {self.MQTT_TOPIC}/pilote")
+            
             client.loop_start()
             return client
         except Exception as e:
@@ -95,8 +193,66 @@ class CSTAMonitor:
         """Callback à la connexion MQTT"""
         if rc == 0:
             logger.info(f"MQTT connecté à {self.MQTT_BROKER}:{self.MQTT_PORT}")
+            # Abonnement au topic de pilotage
+            client.subscribe(f"{self.MQTT_TOPIC}/pilote")
+            logger.info(f"Abonnement au topic de pilotage: {self.MQTT_TOPIC}/pilote")
+            
+            # Publier un message de démarrage
+            self.send_mqtt_message({
+                "type": "SYSTEM_STATUS",
+                "status": "online",
+                "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            })
         else:
             logger.error(f"Échec connexion MQTT, code: {rc}")
+
+    def on_mqtt_message(self, client, userdata, msg):
+        """Callback pour les messages MQTT reçus"""
+        try:
+            # Décodage du message
+            payload_str = msg.payload.decode('utf-8')
+            logger.info(f"Message MQTT reçu sur {msg.topic}: {payload_str}")
+            
+            # Vérifier si c'est le topic de pilotage
+            if msg.topic == f"{self.MQTT_TOPIC}/pilote":
+                # Parsing du JSON
+                try:
+                    data = json.loads(payload_str)
+                    
+                    # Vérifier si c'est une action d'appel
+                    if data.get('action') == 'compose' and 'from' in data and 'to' in data:
+                        source = str(data['from'])
+                        destination = str(data['to'])
+                        
+                        logger.info(f"Demande d'appel reçue: {source} -> {destination}")
+                        if self.print_log:
+                            print(f"Demande d'appel reçue: {source} -> {destination}")
+                        
+                        # Lancer l'appel dans un thread séparé pour ne pas bloquer
+                        import threading
+                        call_thread = threading.Thread(
+                            target=self.place_call,
+                            args=(source, destination)
+                        )
+                        call_thread.daemon = True
+                        call_thread.start()
+                        
+                        # Envoyer confirmation sur MQTT
+                        self.send_mqtt_message({
+                            "type": "CALL_INITIATED",
+                            "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+                            "source": source,
+                            "destination": destination,
+                            "status": "pending"
+                        })
+                    else:
+                        logger.warning(f"Format de message de pilotage non reconnu: {payload_str}")
+                
+                except json.JSONDecodeError:
+                    logger.error(f"Erreur de décodage JSON du message de pilotage: {payload_str}")
+        
+        except Exception as e:
+            logger.error(f"Erreur dans le traitement du message MQTT: {e}")            
     
     def send_mqtt_message(self, message):
         """Envoie un message via MQTT"""
@@ -176,6 +332,24 @@ class CSTAMonitor:
         except Exception as e:
             logger.error(f"Erreur lors de l'envoi de l'historique sur MQTT: {e}")
 
+    # À ajouter après initialisation du client MQTT
+    def test_mqtt_call(self):
+        """Fonction de test pour déclencher un appel via MQTT"""
+        test_message = {
+            "action": "test",
+            "type": "connexion"
+        }
+        try:
+            mqtt_topic = f"{self.MQTT_TOPIC}/pilote"
+            payload = json.dumps(test_message)
+            result = self.mqtt_client.publish(mqtt_topic, payload)
+            logger.info(f"Test MQTT d'appel envoyé: {result.rc} - Message: {payload}")
+            if self.print_log:
+                print(f"Test MQTT d'appel envoyé sur {mqtt_topic}: {payload}")
+            return result.rc == 0
+        except Exception as e:
+            logger.error(f"Erreur lors du test MQTT: {e}")
+            return False
     # --- Utilitaires Hex/ASCII ---
     def bytes_to_hex(self, data):
         """Convertit les données binaires en chaîne hexadécimale"""
@@ -193,6 +367,17 @@ class CSTAMonitor:
         ascii_device = " ".join(f"{ord(c):02X}" for c in device)
         cmd = f"00 11 A1 0F 02 01 01 02 01 47 30 07 80 05 {ascii_device}"
         return self.hex_to_bytes(cmd)
+
+    def build_stop_monitor_cmd(self, device):
+        """Crée une commande pour arrêter la surveillance d'un appareil"""
+        ascii_device = " ".join(f"{ord(c):02X}" for c in device)
+        invoke_id = self.last_invoke_id
+        self.last_invoke_id = (self.last_invoke_id + 1) % 0xFFFF
+        
+        id_hi = (invoke_id >> 8) & 0xFF
+        id_lo = invoke_id & 0xFF
+        cmd = f"00 13 A1 11 02 02 {id_hi:02X} {id_lo:02X} 02 01 48 30 07 80 05 {ascii_device}"
+        return self.hex_to_bytes(cmd)    
     
     def build_snapshot_cmd(self, device):
         """Crée une commande pour obtenir un snapshot de l'état d'un appareil"""
@@ -465,6 +650,7 @@ class CSTAMonitor:
                     pass
         
         # État de connexion (4E 01)
+        # État de connexion (4E 01)
         idx = hex_data.find("4E 01")
         if idx != -1 and idx + 8 <= len(hex_data):
             try:
@@ -479,12 +665,22 @@ class CSTAMonitor:
                     3: "connected",
                     4: "hold",
                     5: "queued",
-                    6: "fail"
+                    6: "fail",
+                    7: "busy",
+                    8: "call_delivered",
+                    9: "call_received",
+                    10: "forwarded",
+                    11: "conferenced",
+                    12: "dialing",
+                    13: "ringing",
+                    14: "suspended",
+                    15: "blocked",
+                    16: "parked"
                 }
                 result["connection_state_desc"] = conn_states.get(state, f"unknown({state})")
             except ValueError:
                 pass
-        
+
         # Code de cause (0A 01)
         idx = hex_data.find("0A 01")
         if idx != -1 and idx + 8 <= len(hex_data):
@@ -494,18 +690,33 @@ class CSTAMonitor:
                 
                 # Map des codes de cause
                 causes = {
+                    0x00: "unspecified",
                     0x16: "newCall",
+                    0x1C: "callForwardImmediate",
+                    0x22: "normal",
+                    0x28: "facilityIE",
                     0x30: "normalClearing",
                     0x0B: "callPickup",
                     0x0D: "destNotObtainable",
                     0x25: "consultation",
                     0x2E: "networkSignal",
-                    0x03: "newConnection"
+                    0x03: "newConnection",
+                    0x20: "busy",
+                    0x24: "callForwardBusy",
+                    0x26: "callForwardNoReply",
+                    0x2A: "invalidNumber",
+                    0x2C: "networkCongestion",
+                    0x32: "temporaryFailure",
+                    0x34: "resourceUnavailable"
                 }
                 result["cause"] = causes.get(cause, f"unknown({cause:02X})")
             except ValueError:
                 pass
         
+
+
+
+
         # Timestamp - souvent après 17 0D
         idx = hex_data.find("17 0D")
         if idx != -1 and idx + 39 <= len(hex_data):
@@ -605,6 +816,100 @@ class CSTAMonitor:
             return f"Événement {event_type}"       
         # Appliquer la fonction de formatage
         #return formatter(event)
+
+    def make_call_csta(self, source_extension, destination_number):
+        """
+        Établit une connexion au PABX et exécute les commandes pour passer un appel.
+        
+        :param source_extension: Le numéro du poste source
+        :param destination_number: Le numéro à appeler
+        :return: True si la séquence d'appel a été exécutée avec succès, False sinon
+        """
+        try:
+            # Créer et connecter le socket
+            call_sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            call_sock.settimeout(10)
+            
+            logger.info(f"Connexion au PABX pour appel de {source_extension} vers {destination_number}...")
+            if self.print_log:
+                print(f"Connexion au PABX pour appel de {source_extension} vers {destination_number}...")
+            
+            call_sock.connect((self.PABX_IP, self.PABX_PORT))
+            
+            # Séquence d'initialisation
+            # 1. Identification
+            ident_cmd = b"\x42"
+            call_sock.sendall(ident_cmd)
+            response = call_sock.recv(1024)
+            logger.info(f"Réponse d'identification pour appel: {self.bytes_to_hex(response)}")
+            time.sleep(1)
+            
+            # 2. Établissement de la session
+            session_cmd = self.hex_to_bytes(
+                "00 46 60 44 80 02 07 80 A1 07 06 05 2B 0C 00 81 34 BE 35 "
+                "28 33 06 07 2B 0C 00 81 5A 81 48 A0 28 30 26 03 02 03 C0 "
+                "30 16 80 04 03 E7 B6 48 81 06 02 5F FD 03 FE A0 83 02 06 "
+                "C0 84 02 03 F0 30 08 82 02 03 D8 83 02 06 C0"
+            )
+            call_sock.sendall(session_cmd)
+            response = call_sock.recv(1024)
+            logger.info(f"Session établie pour appel: {self.bytes_to_hex(response)}")
+            time.sleep(1)
+            
+            # 3. Générer et envoyer les commandes d'appel
+            commands = self.make_call_csta(source_extension, destination_number)
+            
+            # 3.1 Envoyer Make Call (appel fictif)
+            call_sock.sendall(commands[0])
+            response = call_sock.recv(1024)
+            logger.info(f"Réponse MakeCall (fictif): {self.bytes_to_hex(response)}")
+            time.sleep(1)
+            
+            # 3.2 Envoyer Generate Digits
+            call_sock.sendall(commands[1])
+            response = call_sock.recv(1024)
+            logger.info(f"Réponse GenerateDigits: {self.bytes_to_hex(response)}")
+            time.sleep(1)
+            
+            # 3.3 Envoyer Clear Connection (pour terminer l'appel fictif)
+            clear_conn_cmd = self.hex_to_bytes(f"00 13 A1 11 02 01 03 02 01 34 30 09 80 05 {self.to_ascii_hex(source_extension)} 81 00")
+            call_sock.sendall(clear_conn_cmd)
+            response = call_sock.recv(1024)
+            logger.info(f"Réponse ClearConnection: {self.bytes_to_hex(response)}")
+            time.sleep(1)
+            
+            # 3.4 Envoyer Make Call (avec le vrai numéro)
+            real_call_cmd = self.hex_to_bytes(f"00 1D A1 1B 02 01 04 02 01 32 30 13 80 05 {self.to_ascii_hex(source_extension)} 81 05 {self.to_ascii_hex(destination_number)} 82 01 01")
+            call_sock.sendall(real_call_cmd)
+            response = call_sock.recv(1024)
+            logger.info(f"Réponse MakeCall (réel): {self.bytes_to_hex(response)}")
+            
+            # 4. Fermer la connexion
+            call_sock.close()
+            
+            logger.info(f"Appel initié avec succès: {source_extension} -> {destination_number}")
+            if self.print_log:
+                print(f"Appel initié avec succès: {source_extension} -> {destination_number}")
+            
+            return True
+        
+        except Exception as e:
+            logger.error(f"Erreur lors de l'initiation de l'appel: {e}")
+            if self.print_log:
+                print(f"Erreur lors de l'initiation de l'appel: {e}")
+            return False
+        
+        finally:
+            if 'call_sock' in locals() and call_sock:
+                try:
+                    call_sock.close()
+                except:
+                    pass
+
+    def to_ascii_hex(self, s):
+        return ' '.join(f"{ord(c):02X}" for c in s)
+
+
 
     # Fonctions de formatage individuelles pour chaque type d'événement
     def _format_call_cleared(self, event):
@@ -956,10 +1261,27 @@ class CSTAMonitor:
     def run(self):
         """Fonction principale exécutant la surveillance"""
         logger.info(f"Démarrage de la surveillance CSTA pour les postes: {', '.join(self.DEVICES_TO_MONITOR)}")
+        if self.print_log:
+            print(f"Démarrage de la surveillance CSTA pour les postes: {', '.join(self.DEVICES_TO_MONITOR)}")
+        
+        # Initialiser MQTT au lancement du programme
+        self.mqtt_client = self.init_mqtt()
+        if self.mqtt_client:
+            logger.info("Client MQTT initialisé avec succès")
+            if self.print_log:
+                print("Client MQTT initialisé avec succès")
+            
+            # Faire un test après quelques secondes
+            time.sleep(3)
+            self.test_mqtt_call()
+        else:
+            logger.error("Échec de l'initialisation MQTT. Les notifications MQTT ne seront pas envoyées.")
+            if self.print_log:
+                print("Échec de l'initialisation MQTT. Les notifications MQTT ne seront pas envoyées.")
         
         while True:
             try:
-                # Initialiser MQTT
+                # Rétablir MQTT si déconnecté
                 if not self.mqtt_client:
                     self.mqtt_client = self.init_mqtt()
                 
@@ -968,14 +1290,20 @@ class CSTAMonitor:
                 
                 if connection_result:
                     logger.info(f"Session terminée normalement, reconnexion dans {self.RECONNECT_DELAY} secondes")
+                    if self.print_log:
+                        print(f"Session terminée normalement, reconnexion dans {self.RECONNECT_DELAY} secondes")
                 else:
                     logger.warning(f"Session terminée avec erreur, reconnexion dans {self.RECONNECT_DELAY} secondes")
+                    if self.print_log:
+                        print(f"Session terminée avec erreur, reconnexion dans {self.RECONNECT_DELAY} secondes")
                 
                 # Pause avant la reconnexion
                 time.sleep(self.RECONNECT_DELAY)
                 
             except Exception as e:
                 logger.error(f"Erreur inattendue: {e}")
+                if self.print_log:
+                    print(f"Erreur inattendue: {e}")
                 time.sleep(self.RECONNECT_DELAY)
 
     def connect_and_monitor(self):
@@ -1209,6 +1537,51 @@ class CSTAMonitor:
     def signal_handler(self, sig, frame):
         """Gestionnaire de signaux pour l'arrêt propre"""
         logger.info(f"Signal {sig} reçu, arrêt en cours...")
+        if self.print_log:
+            print(f"Signal {sig} reçu, arrêt en cours...")
+        
+        # Créer un socket pour la démonitoration
+        try:
+            demontior_sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            demontior_sock.settimeout(5)  # Timeout court pour la déconnexion
+            demontior_sock.connect((self.PABX_IP, self.PABX_PORT))
+            
+            # Identification
+            ident_cmd = b"\x42"
+            demontior_sock.sendall(ident_cmd)
+            response = demontior_sock.recv(1024)
+            
+            # Établissement de la session pour démonitorer
+            session_cmd = self.hex_to_bytes(
+                "00 46 60 44 80 02 07 80 A1 07 06 05 2B 0C 00 81 34 BE 35 "
+                "28 33 06 07 2B 0C 00 81 5A 81 48 A0 28 30 26 03 02 03 C0 "
+                "30 16 80 04 03 E7 B6 48 81 06 02 5F FD 03 FE A0 83 02 06 "
+                "C0 84 02 03 F0 30 08 82 02 03 D8 83 02 06 C0"
+            )
+            demontior_sock.sendall(session_cmd)
+            response = demontior_sock.recv(1024)
+            
+            # Démonitorer chaque appareil
+            for device in self.DEVICES_TO_MONITOR:
+                logger.info(f"Démonitoration de {device}")
+                stop_cmd = self.build_stop_monitor_cmd(device)
+                demontior_sock.sendall(stop_cmd)
+                try:
+                    response = demontior_sock.recv(1024)
+                    logger.info(f"Réponse StopMonitor pour {device}: {self.bytes_to_hex(response)}")
+                except socket.timeout:
+                    logger.warning(f"Pas de réponse pour StopMonitor {device}")
+                time.sleep(0.5)
+            
+            # Fermer le socket de démonitoration
+            demontior_sock.close()
+            logger.info("Tous les postes ont été démonitorés avec succès")
+            if self.print_log:
+                print("Tous les postes ont été démonitorés avec succès")
+        except Exception as e:
+            logger.error(f"Erreur lors de la démonitoration: {e}")
+            if self.print_log:
+                print(f"Erreur lors de la démonitoration: {e}")
         
         # Fermer la connexion MQTT
         if self.mqtt_client:
@@ -1216,10 +1589,14 @@ class CSTAMonitor:
                 self.mqtt_client.loop_stop()
                 self.mqtt_client.disconnect()
                 logger.info("Connexion MQTT fermée")
+                if self.print_log:
+                    print("Connexion MQTT fermée")
             except:
                 pass
         
         logger.info("Programme arrêté")
+        if self.print_log:
+            print("Programme arrêté")
         sys.exit(0)
 
     def log_call_history(self, call):
@@ -1285,8 +1662,9 @@ class CSTAMonitor:
       
 def main():
     """Fonction principale"""
-    monitor = CSTAMonitor()
-
+    # Utiliser args.printLog pour définir le comportement d'affichage
+    monitor = CSTAMonitor(print_log=args.printLog, config_file=args.config)
+    
     # Afficher les options de démarrage
     log_status = []
     if args.printLog:
@@ -1300,7 +1678,8 @@ def main():
     
     logger.info(status_message)
     if args.printLog:
-        print(status_message)    
+        print(status_message)
+    
     monitor.run()
 
 if __name__ == "__main__":
@@ -1308,6 +1687,10 @@ if __name__ == "__main__":
         main()
     except KeyboardInterrupt:
         logger.info("Programme arrêté par l'utilisateur")
+        if args.printLog:  # Ajoutez cette condition
+            print("Programme arrêté par l'utilisateur")
     except Exception as e:
         logger.critical(f"Erreur fatale: {e}")
+        if args.printLog:  # Ajoutez cette condition
+            print(f"Erreur fatale: {e}")
         sys.exit(1)
