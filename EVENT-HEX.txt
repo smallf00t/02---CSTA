@@ -1,0 +1,588 @@
+00 DB A1 81 D8 02 02 29 E8 02 01 15 30 81 CE 55 
+04 01 35 F3 03 A0 7C A1 7A 30 78 6B 0A 82 02 2B 
+7A 83 04 08 B3 01 00 6B 0A 82 02 2B 7E 83 04 08 
+B3 01 00 63 07 84 05 32 34 31 30 33 63 06 82 04 
+30 30 31 37 30 4A A3 15 30 13 6B 0A 82 02 2B 82 
+83 04 08 B3 01 00 80 05 32 34 31 30 33 A3 14 30 
+12 6B 0A 82 02 2B 82 83 04 0B FE 01 04 80 04 30 
+30 31 37 A3 1B 30 19 6B 0A 82 02 2B 82 83 04 0B 
+FD 01 04 80 0B 30 30 37 38 39 36 31 36 30 30 34 
+4E 01 03 7E 48 A0 0F 17 0D 32 35 30 33 30 31 31 
+36 30 37 32 33 5A A1 35 30 0B 06 06 2B 0C 89 36 
+83 78 02 01 00 30 12 06 06 2B 0C 89 36 84 09 04 
+08 34 22 C3 67 75 2B 01 00 30 12 06 06 2B 0C 89 
+36 84 0A 04 08 63 22 C3 67 7E 2B 01 00 
+ 0*02 01 15 
+ 1*55 04 01 35 F3 03 
+ 2*A0 7C A1 7A 
+ 3*6B 0A 82 02 2B 7A 83 04 08 B3 01 00 
+ 4*6B 0A 82 02 2B 7E 83 04 08 B3 01 00 
+ 5*63 07 84 05 32 34 31 30 33 
+ 6*63 06 82 04 30 30 31 37 
+ 7*A3 15 30 13 
+ 8*6B 0A 82 02 2B 82 83 04 08 B3 01 00 
+ 9*80 05 32 34 31 30 33 
+10*A3 14 30 12 
+11*6B 0A 82 02 2B 82 83 04 0B FE 01 04 
+12*80 04 30 30 31 37 
+13*A3 1B 30 19 
+14*6B 0A 82 02 2B 82 83 04 0B FD 01 04 
+15*80 0B 30 30 37 38 39 36 31 36 30 30 34 
+16*4E 01 03 
+17*7E 48 A0 0F 17 0D 32 35 30 33 30 31 31 36 30 37 
+32 33 5A A1 35 30 0B 06 06 2B 0C 89 36 83 78 02 
+01 00 30 12 06 06 2B 0C 89 36 84 09 04 08 34 22 
+C3 67 75 2B 01 00 30 12 06 06 2B 0C 89 36 84 0A 
+04 08 63 22 C3 67 7E 2B 01 00 
+Event = EVT_CONFERENCED (2)
+CrossRefIdentifier = 20312835
+ConnectionCall = 11130 (2B7A)
+ConnectionDevice = 24103
+!PrimaryOldCallCall = 11130 (2B7A)
+*PrimaryOldCallDevice = 24103
+!SecondaryOldCallCall = 11134 (2B7E)
+*SecondaryOldDevice = 24103
+*ConfControler = 24103
+*AddedParty = 0017
+** Connection List (V2) ** 3 élements
+0* 80=24103 81= 82=11138 83=08 B3 01 00
+1* 80=0017 81= 82=11138 83=0BFE0104
+2* 80=00789616004 81= 82=11138 83=0BFD0104
+DecodeCause = -1 ()
+Debut d'exploitation des listes de connection comme ConfControler.
+Efface svudu=24103 posteimplique=0789616004 poste a effacer (sD)=
+ON EFFACE
+GesCall Type=*efface* NumCall=11130 Xref=20312835 sD=**  * iIndCall=0*
+* DumpCall *
+  * 1 * 11134 * 0017 * EnConv*     ***
+*2*24103*20312835*
+************
+  * 0 * 10952 *  * EnConv*         ***
+*5*24151*18476034*
+************
+  * 0 * 10921 *  * EnConv*         ***
+*7*24153*18192642*
+************
+Efface svudu=24103 posteimplique=0017 poste a effacer (sD)=
+ON EFFACE
+GesCall Type=*efface* NumCall=11134 Xref=20312835 sD=**  * iIndCall=1*
+* DumpCall *
+  * 0 * 10952 *  * EnConv*         ***
+*5*24151*18476034*
+************
+  * 0 * 10921 *  * EnConv*         ***
+*7*24153*18192642*
+************
+GesCall Type=*PosteEnConf* NumCall=11138 Xref=20312835 sD=*24103*  *Call Cree*
+GesCall Type=*PosteEnConf* NumCall=11138 Xref=20312835 sD=*24103*  
+* DumpCall *
+  * 0 * 11138 * 24103 * Confere*   *0017*00789616004*
+*2*24103*20312835*
+************
+  * 0 * 10952 *  * EnConv*         ***
+*5*24151*18476034*
+************
+  * 0 * 10921 *  * EnConv*         ***
+*7*24153*18192642*
+************
+01/03/25;16:07:23;24103;11138;24103;en conference avec;0017;et;0789616004
+
+00 5B A1 59 02 02 2A 30 02 01 15 30 50 55 04 01 
+35 F3 03 A0 1F A2 1D 30 1B 6B 0A 82 02 2B 82 83 
+04 08 B3 01 00 63 07 84 05 32 34 31 30 33 4E 01 
+00 0A 01 30 7E 27 A0 0F 17 0D 32 35 30 33 30 31 
+31 36 30 38 32 37 5A A1 14 30 12 06 06 2B 0C 89 
+36 84 09 04 08 34 22 C3 67 75 2B 01 00 
+ 0*02 01 15 
+ 1*55 04 01 35 F3 03 
+ 2*A0 1F A2 1D 
+ 3*6B 0A 82 02 2B 82 83 04 08 B3 01 00 
+ 4*63 07 84 05 32 34 31 30 33 
+ 5*4E 01 00 
+ 6*0A 01 30 
+ 7*7E 27 A0 0F 17 0D 32 35 30 33 30 31 31 36 30 38 
+32 37 5A A1 14 30 12 06 06 2B 0C 89 36 84 09 04 
+08 34 22 C3 67 75 2B 01 00 
+Event = EVT_CONNECTION_CLEARED (3)
+CrossRefIdentifier = 20312835
+ConnectionCall = 11138 (2B82)
+ConnectionDevice = 24103
+ReleasingDevice = 24103
+LocalConnectionInfo = 0 (null)
+Cause = 48 (normalClearing)
+GesCall Type=*Efface* NumCall=11138 Xref=20312835 sD=*24103*  * Effconf Maitre 3*
+* DumpCall *
+  * 0 * 11140 * 0666355437 * EnConv****
+*3*24104*30565635*
+************
+  * 0 * 11145 * 0756945200 * EnConv****
+*4*24105*20618243*
+************
+  * 0 * 10952 *  * EnConv*         ***
+*5*24151*18476034*
+************
+  * 0 * 10921 *  * EnConv*         ***
+*7*24153*18192642*
+************
+01/03/25;16:08:27;24103;11138;24103;raccroche;;cause=48(normalClearing)
+
+00 71 A1 6F 02 02 2A 64 02 01 15 30 66 55 04 01 
+3A 9C 03 A0 35 A3 33 30 31 6B 0A 82 02 2B 91 83 
+04 09 16 01 00 63 07 84 05 32 34 36 35 30 61 07 
+84 05 32 34 31 30 35 62 07 84 05 32 34 36 34 30 
+64 02 88 00 4E 01 03 0A 01 16 7E 27 A0 0F 17 0D 
+32 35 30 33 30 31 31 36 30 39 34 32 5A A1 14 30 
+12 06 06 2B 0C 89 36 84 09 04 08 36 23 C3 67 91 
+2B 01 00 
+ 0*02 01 15 
+ 1*55 04 01 3A 9C 03 
+ 2*A0 35 A3 33 
+ 3*6B 0A 82 02 2B 91 83 04 09 16 01 00 
+ 4*63 07 84 05 32 34 36 35 30 
+ 5*61 07 84 05 32 34 31 30 35 
+ 6*62 07 84 05 32 34 36 34 30 
+ 7*64 02 88 00 
+ 8*4E 01 03 
+ 9*0A 01 16 
+10*7E 27 A0 0F 17 0D 32 35 30 33 30 31 31 36 30 39 
+34 32 5A A1 14 30 12 06 06 2B 0C 89 36 84 09 04 
+08 36 23 C3 67 91 2B 01 00 
+Event = EVT_DELIVERED (4)
+CrossRefIdentifier = 20618243
+ConnectionCall = 11153 (2B91)
+ConnectionDevice = 
+AlertingDevice = 24650
+CallingDevice = 24105
+CalledDevice = 24640
+*LastRedirectionDevice  = 
+LocalConnectionInfo = 3 (connect)
+DecodeCause = 22 (newCall)
+GesCall Type=*Sonne* NumCall=11153 Xref=20618243 sD=*24650*  
+* DumpCall *
+  * 0 * 11145 * 0756945200 * EnGarde****
+  * 1 * 11153 * 24650 * Sonne*     ***
+*4*24105*20618243*
+************
+  * 0 * 10952 *  * EnConv*         ***
+*5*24151*18476034*
+************
+  * 0 * 10921 *  * EnConv*         ***
+*7*24153*18192642*
+************
+01/03/25;16:09:42;24105;11153;24650;sonne par;24105;renvoye du;24640
+
+00 8D A1 81 8A 02 02 24 27 02 01 15 30 81 80 55 
+04 01 35 F3 03 A0 42 A5 40 30 3E 6B 0A 82 02 2A 
+CE 83 04 0B FF 01 04 63 0E 82 0C 30 30 30 32 33 
+38 32 32 31 38 31 35 61 07 84 05 32 34 31 30 33 
+62 0D 82 0B 30 30 32 33 38 32 32 31 38 31 35 64 
+02 88 00 4E 01 03 0A 01 2E 7E 34 A0 0F 17 0D 32 
+35 30 33 30 31 31 35 34 31 35 32 5A A1 21 30 0B 
+06 06 2B 0C 89 36 83 78 02 01 01 30 12 06 06 2B 
+0C 89 36 84 09 04 08 AF 1C C3 67 CE 2A 01 00 
+ 0*02 01 15 
+ 1*55 04 01 35 F3 03 
+ 2*A0 42 A5 40 
+ 3*6B 0A 82 02 2A CE 83 04 0B FF 01 04 
+ 4*63 0E 82 0C 30 30 30 32 33 38 32 32 31 38 31 35 
+
+ 5*61 07 84 05 32 34 31 30 33 
+ 6*62 0D 82 0B 30 30 32 33 38 32 32 31 38 31 35 
+ 7*64 02 88 00 
+ 8*4E 01 03 
+ 9*0A 01 2E 
+10*7E 34 A0 0F 17 0D 32 35 30 33 30 31 31 35 34 31 
+35 32 5A A1 21 30 0B 06 06 2B 0C 89 36 83 78 02 
+01 01 30 12 06 06 2B 0C 89 36 84 09 04 08 AF 1C 
+C3 67 CE 2A 01 00 
+Event = EVT_ESTABLISHED (6)
+CrossRefIdentifier = 20312835
+Pas de Changement. cause= 0BFF0104
+ConnectionCall = 10958 (2ACE)
+ConnectionDevice = 
+AnsweringDevice = 00238221815
+CallingDevice = 24103
+CalledDevice = 0238221815
+*LastRedirectionDevice=
+*LocalConnectionInfo = 3 (connect)
+DecodeCause = 46 (networkSignal)
+GesCall Type=*PosteEnConv* NumCall=10958 Xref=20312835 sD=*00238221815*  
+* DumpCall *
+  * 0 * 10958 * 00238221815 * EnConv****
+*2*24103*20312835*
+************
+  * 0 * 10952 *  * EnConv*         ***
+*5*24151*18476034*
+************
+  * 0 * 10921 *  * EnConv*         ***
+*7*24153*18192642*
+************
+01/03/25;15:41:52;24103;10958;00238221815;en conversation avec;24103
+
+00 64 A1 62 02 02 0E E8 02 01 15 30 59 55 04 01 
+EE DA 02 A0 28 A4 26 30 24 6B 0A 82 02 46 F6 83 
+04 0C 7B 01 00 63 07 84 05 32 34 30 30 32 63 07 
+84 05 32 34 36 34 30 4E 01 00 0A 01 1C 7E 27 A0 
+0F 17 0D 32 35 30 33 30 32 31 34 31 32 30 31 5A 
+A1 14 30 12 06 06 2B 0C 89 36 84 09 04 08 21 59 
+C4 67 F6 46 01 00 
+ 0*02 01 15 
+ 1*55 04 01 EE DA 02 
+ 2*A0 28 A4 26 
+ 3*6B 0A 82 02 46 F6 83 04 0C 7B 01 00 
+ 4*63 07 84 05 32 34 30 30 32 
+ 5*63 07 84 05 32 34 36 34 30 
+ 6*4E 01 00 
+ 7*0A 01 1C 
+ 8*7E 27 A0 0F 17 0D 32 35 30 33 30 32 31 34 31 32 
+30 31 5A A1 14 30 12 06 06 2B 0C 89 36 84 09 04 
+08 21 59 C4 67 F6 46 01 00 
+Event = EVT_DIVERTED (5)
+CrossRefIdentifier = 32430594
+ConnectionCall = 18166 (46F6)
+ConnectionDevice = 24002
+DivertingDevice = 24002
+NewDestination = 24640
+*LocalConnectionInfo = 0(null)
+DecodeCause = 28 (redirected)
+Efface svudu=24002 posteimplique=0656894080 poste a effacer (sD)=
+ON EFFACE
+GesCall Type=*efface* NumCall=18166 Xref=32430594 sD=**  * iIndCall=0*
+* DumpCall *
+02/03/25;14:12:01;24002;18166;24002;redirige vers;24640;poste implique;0656894080
+
+
+
+00 5B A1 59 02 02 24 C1 02 01 15 30 50 55 04 01 
+D2 65 03 A0 1F A7 1D 30 1B 6B 0A 82 02 2A D8 83 
+04 08 B4 01 00 63 07 84 05 32 34 31 30 34 4E 01 
+04 0A 01 25 7E 27 A0 0F 17 0D 32 35 30 33 30 31 
+31 35 34 33 35 39 5A A1 14 30 12 06 06 2B 0C 89 
+36 84 09 04 08 AC 1C C3 67 CD 2A 01 00 
+ 0*02 01 15 
+ 1*55 04 01 D2 65 03 
+ 2*A0 1F A7 1D 
+ 3*6B 0A 82 02 2A D8 83 04 08 B4 01 00 
+ 4*63 07 84 05 32 34 31 30 34 
+ 5*4E 01 04 
+ 6*0A 01 25 
+ 7*7E 27 A0 0F 17 0D 32 35 30 33 30 31 31 35 34 33 
+35 39 5A A1 14 30 12 06 06 2B 0C 89 36 84 09 04 
+08 AC 1C C3 67 CD 2A 01 00 
+Event = EVT_HELD (8)
+CrossRefIdentifier = 30565635
+ConnectionCall = 10968 (2AD8)
+ConnectionDevice = 24104
+HoldingDevice = 24104
+LocalConnectionInfo = 4 (hold)
+DecodeCause = 37 (consultation)
+GesCall Type=*MiseEnGarde* NumCall=10968 Xref=30565635 sD=**  
+* DumpCall *
+  * 0 * 10968 * 0660969877 * EnGarde****
+*3*24104*30565635*
+************
+  * 0 * 10961 * 0238954545 * EnConv****
+*4*24105*20618243*
+************
+  * 0 * 10952 *  * EnConv*         ***
+*5*24151*18476034*
+************
+  * 0 * 10921 *  * EnConv*         ***
+*7*24153*18192642*
+************
+01/03/25;15:43:59;24104;10968;24104;met en garde
+
+00 72 A1 70 02 02 28 AC 02 01 15 30 67 55 04 01 
+3A 9C 03 A0 29 A8 27 30 25 6B 0A 82 02 2B 63 83 
+04 0B FC 01 04 63 02 87 00 62 0D 82 0B 30 30 36 
+35 39 37 33 32 31 32 32 4E 01 03 0A 01 16 7E 34 
+A0 0F 17 0D 32 35 30 33 30 31 31 36 30 30 34 32 
+5A A1 21 30 0B 06 06 2B 0C 89 36 83 78 02 01 00 
+30 12 06 06 2B 0C 89 36 84 09 04 08 1A 21 C3 67 
+63 2B 01 00 
+ 0*02 01 15 
+ 1*55 04 01 3A 9C 03 
+ 2*A0 29 A8 27 
+ 3*6B 0A 82 02 2B 63 83 04 0B FC 01 04 
+ 4*63 02 87 00 
+ 5*62 0D 82 0B 30 30 36 35 39 37 33 32 31 32 32 
+ 6*4E 01 03 
+ 7*0A 01 16 
+ 8*7E 34 A0 0F 17 0D 32 35 30 33 30 31 31 36 30 30 
+34 32 5A A1 21 30 0B 06 06 2B 0C 89 36 83 78 02 
+01 00 30 12 06 06 2B 0C 89 36 84 09 04 08 1A 21 
+C3 67 63 2B 01 00 
+Event = EVT_NETWORK_REACHED (9)
+CrossRefIdentifier = 20618243
+Pas de Changement. cause= 0BFC0104
+ConnectionCall = 11107 (2B63)
+ConnectionDevice = 
+NetworkReachedDevice  = 24105
+*TrunkUsed = 
+*CalledDevice = 0659732122
+*LocalConnectionInfo = 3 (connect)
+DecodeCause = 22 (newCall)
+01/03/25;16:00:42;24105;11107;24105;sur reseau public;trunk;0
+
+
+00 6A A1 68 02 02 28 E2 02 01 15 30 5F 55 04 01 
+3A 9C 03 A0 2E A9 2C 30 2A 6B 0A 82 02 2B 69 83 
+04 08 B5 01 00 61 07 84 05 32 34 31 30 35 62 0D 
+82 0B 30 30 36 35 39 37 33 32 31 32 32 4E 01 03 
+0A 01 16 7E 27 A0 0F 17 0D 32 35 30 33 30 31 31 
+36 30 31 33 39 5A A1 14 30 12 06 06 2B 0C 89 36 
+84 09 04 08 53 21 C3 67 69 2B 01 00 
+ 0*02 01 15 
+ 1*55 04 01 3A 9C 03 
+ 2*A0 2E A9 2C 
+ 3*6B 0A 82 02 2B 69 83 04 08 B5 01 00 
+ 4*61 07 84 05 32 34 31 30 35 
+ 5*62 0D 82 0B 30 30 36 35 39 37 33 32 31 32 32 
+ 6*4E 01 03 
+ 7*0A 01 16 
+ 8*7E 27 A0 0F 17 0D 32 35 30 33 30 31 31 36 30 31 
+33 39 5A A1 14 30 12 06 06 2B 0C 89 36 84 09 04 
+08 53 21 C3 67 69 2B 01 00 
+Event = EVT_ORIGINATED (10)
+CrossRefIdentifier = 20618243
+ConnectionCall = 11113 (2B69)
+ConnectionDevice = 24105
+*OriginatedConnectionDevice  = 24105
+CallingDevice = 24105
+CalledDevice = 0659732122
+*LocalConnectionInfo = 3 (connect)
+DecodeCause = 22 (newCall)
+GesCall Type=*Poste* NumCall=11113 Xref=20618243 sD=*0659732122*  Maj du Num Poste
+* DumpCall *
+  * 0 * 11104 * 0786037896 * EnConv****
+*3*24104*30565635*
+************
+  * 0 * 11113 * 0659732122 * Init* ***
+*4*24105*20618243*
+************
+  * 0 * 10952 *  * EnConv*         ***
+*5*24151*18476034*
+************
+  * 0 * 10921 *  * EnConv*         ***
+*7*24153*18192642*
+************
+01/03/25;16:01:39;24105;11113;24105;a numerote le;0659732122
+
+00 58 A1 56 02 02 3C 5C 02 01 15 30 4D 55 04 01 
+15 99 02 A0 1C AB 1A 30 18 6B 0A 82 02 2D C5 83 
+04 02 62 01 04 63 07 84 05 37 35 33 30 32 4E 01 
+03 7E 27 A0 0F 17 0D 32 35 30 33 30 31 31 37 33 
+32 35 35 5A A1 14 30 12 06 06 2B 0C 89 36 84 09 
+04 08 77 36 C3 67 C5 2D 01 00 
+ 0*02 01 15 
+ 1*55 04 01 15 99 02 
+ 2*A0 1C AB 1A 
+ 3*6B 0A 82 02 2D C5 83 04 02 62 01 04 
+ 4*63 07 84 05 37 35 33 30 32 
+ 5*4E 01 03 
+ 6*7E 27 A0 0F 17 0D 32 35 30 33 30 31 31 37 33 32 
+35 35 5A A1 14 30 12 06 06 2B 0C 89 36 84 09 04 
+08 77 36 C3 67 C5 2D 01 00 
+Event = EVT_RETRIEVED (12)
+CrossRefIdentifier = 18192642
+Pas de Changement. cause= 02620104
+ConnectionCall = 11717 (2DC5)
+ConnectionDevice = 
+RetrievingDevice = 75302
+*LocalConnectionInfo = 3(connect)
+DecodeCause = -1 ()
+GesCall Type=*EffacerGarde* NumCall=11717 Xref=18192642 sD=**  
+* DumpCall *
+  * 0 * 11718 * 0248484855 * Sonne****
+*2*24103*20312835*
+************
+  * 0 * 11715 * 0637861818 * EnConv****
+*3*24104*30565635*
+************
+  * 0 * 10952 *  * EnConv*         ***
+*5*24151*18476034*
+************
+  * 0 * 10921 *  * EnConv*         ***
+  * 1 * 11717 * 75302 * EnConv*    ***
+*7*24153*18192642*
+************
+01/03/25;17:32:55;24153;11717;75302;reprend la garde;24153
+
+00 4F A1 4D 02 02 3C 6D 02 01 15 30 44 55 04 01 
+D2 65 03 A0 13 AC 11 30 0F 6B 0A 82 02 2D CB 83 
+04 08 B4 01 00 4E 01 01 7E 27 A0 0F 17 0D 32 35 
+30 33 30 31 31 37 33 33 30 31 5A A1 14 30 12 06 
+06 2B 0C 89 36 84 09 04 08 BD 36 C3 67 CB 2D 01 
+00 
+ 0*02 01 15 
+ 1*55 04 01 D2 65 03 
+ 2*A0 13 AC 11 
+ 3*6B 0A 82 02 2D CB 83 04 08 B4 01 00 
+ 4*4E 01 01 
+ 5*7E 27 A0 0F 17 0D 32 35 30 33 30 31 31 37 33 33 
+30 31 5A A1 14 30 12 06 06 2B 0C 89 36 84 09 04 
+08 BD 36 C3 67 CB 2D 01 00 
+Event = EVT_SERVICE_INITIATED (13)
+CrossRefIdentifier = 30565635
+ConnectionCall = 11723 (2DCB)
+ConnectionDevice = 24104
+*InitiatedConnectionDevice = 24104
+*LocalConnectionInfo = 1 (initiate)
+TimeStamp = 01/03/25 17:33:01
+GesCall Type=*Creer* NumCall=11723 Xref=30565635 sD=**  *Call Cree*
+* DumpCall *
+  * 0 * 11718 * 0248484855 * Sonne****
+*2*24103*20312835*
+************
+  * 0 * 11723 * rien * Init*       ***
+*3*24104*30565635*
+************
+  * 0 * 10952 *  * EnConv*         ***
+  * 1 * 11721 * 0238956566 * EnConv****
+*5*24151*18476034*
+************
+  * 0 * 10921 *  * EnConv*         ***
+  * 1 * 11717 * 75302 * EnConv*    ***
+*7*24153*18192642*
+************
+01/03/25;17:33:01;24104;11723;24104;decroche
+
+
+00 C2 A1 81 BF 02 02 3C 8E 02 01 15 30 81 B5 55 
+04 01 15 99 02 A0 63 AD 61 30 5F 6B 0A 82 02 2D 
+C5 83 04 08 CD 01 00 63 07 84 05 37 35 33 30 32 
+63 0E 82 0C 30 30 30 36 30 35 39 33 37 39 37 38 
+30 35 A3 1C 30 1A 6B 0A 82 02 2D CE 83 04 02 62 
+01 04 80 0C 30 30 30 36 30 35 39 33 37 39 37 38 
+A3 15 30 13 6B 0A 82 02 2D CE 83 04 08 CD 01 00 
+80 05 32 34 31 35 33 4E 01 03 7E 48 A0 0F 17 0D 
+32 35 30 33 30 31 31 37 33 33 32 31 5A A1 35 30 
+0B 06 06 2B 0C 89 36 83 78 02 01 0B 30 12 06 06 
+2B 0C 89 36 84 09 04 08 77 36 C3 67 C5 2D 01 00 
+30 12 06 06 2B 0C 89 36 84 0A 04 08 77 36 C3 67 
+C5 2D 01 00 
+ 0*02 01 15 
+ 1*55 04 01 15 99 02 
+ 2*A0 63 AD 61 
+ 3*6B 0A 82 02 2D C5 83 04 08 CD 01 00 
+ 4*63 07 84 05 37 35 33 30 32 
+ 5*63 0E 82 0C 30 30 30 36 30 35 39 33 37 39 37 38 
+
+ 6*A3 1C 30 1A 
+ 7*6B 0A 82 02 2D CE 83 04 02 62 01 04 
+ 8*80 0C 30 30 30 36 30 35 39 33 37 39 37 38 
+ 9*A3 15 30 13 
+10*6B 0A 82 02 2D CE 83 04 08 CD 01 00 
+11*80 05 32 34 31 35 33 
+12*4E 01 03 
+13*7E 48 A0 0F 17 0D 32 35 30 33 30 31 31 37 33 33 
+32 31 5A A1 35 30 0B 06 06 2B 0C 89 36 83 78 02 
+01 0B 30 12 06 06 2B 0C 89 36 84 09 04 08 77 36 
+C3 67 C5 2D 01 00 30 12 06 06 2B 0C 89 36 84 0A 
+04 08 77 36 C3 67 C5 2D 01 00 
+Event = EVT_TRANSFERRED (14)
+CrossRefIdentifier = 18192642
+ConnectionCall = 11717 (2DC5)
+ConnectionDevice = 24153
+TransferringDevice = 75302
+TransferredDevice = 00605937978
+Efface svudu=24153 posteimplique=75302 poste a effacer (sD)=
+ON EFFACE
+GesCall Type=*Efface* NumCall=11717 Xref=18192642 sD=**  * iIndCall=1*
+* DumpCall *
+  * 0 * 11718 * 0248484855 * Sonne****
+*2*24103*20312835*
+************
+  * 0 * 10952 *  * EnConv*         ***
+  * 1 * 11721 * 0238956566 * EnConv****
+*5*24151*18476034*
+************
+  * 0 * 10921 *  * EnConv*         ***
+*7*24153*18192642*
+************
+** Connection List (V2) ** 2 élements
+0* 80=000605937978 81= 82=11726 83=02620104
+1* 80=24153 81= 82=11726 83=08CD0100
+sOriginatedTransferredDevice = 24153
+Erreur numéro  0 dans le Programme 
+Procedure +++ Le numéro de poste 00605937978 n'a pas été trouvé !!! +++
+()
+
+Erreur numéro  0 dans le Programme 
+Procedure Poste N° 0 = 24101
+()
+
+Erreur numéro  0 dans le Programme 
+Procedure Poste N° 1 = 24102
+()
+
+Erreur numéro  0 dans le Programme 
+Procedure Poste N° 2 = 24103
+()
+
+Erreur numéro  0 dans le Programme 
+Procedure Poste N° 3 = 24104
+()
+
+Erreur numéro  0 dans le Programme 
+Procedure Poste N° 4 = 24105
+()
+
+Erreur numéro  0 dans le Programme 
+Procedure Poste N° 5 = 24151
+()
+
+Erreur numéro  0 dans le Programme 
+Procedure Poste N° 6 = 24152
+()
+
+Erreur numéro  0 dans le Programme 
+Procedure Poste N° 7 = 24153
+()
+
+GesCall Type=*Posteenconv* NumCall=11726 Xref=18192642 sD=*00605937978*  *Call Cree*
+GesCall Type=*Posteenconv* NumCall=11726 Xref=18192642 sD=*00605937978*  
+* DumpCall *
+  * 0 * 11718 * 0248484855 * Sonne****
+*2*24103*20312835*
+************
+  * 0 * 10952 *  * EnConv*         ***
+  * 1 * 11721 * 0238956566 * EnConv****
+*5*24151*18476034*
+************
+  * 0 * 10921 *  * EnConv*         ***
+  * 1 * 11726 * 00605937978 * EnConv****
+*7*24153*18192642*
+************
+DecodeCause = -1 ()
+01/03/25;17:33:21;24153;11717;24153;sonne par;75302;transfert le;00605937978
+
+
+00 5B A1 59 02 02 71 F7 02 01 15 30 50 55 04 01 19 EC 01 A0 1F A2 1D 30 1B 6B 0A 82 02 43 47 83 04 08 CB 01 00 63 07 84 05 32 34 31 35 31 4E 01 00 0A 01 30 7E 27 A0 0F 17 0D 32 35 30 33 30 32 31 31 33 35 31 35 5A A1 14 30 12 06 06 2B 0C 89 36 84 09 04 08 C3 32 C4 67 28 43 01 00
+
+Le décodage ASN.1 du message CSTA fourni révèle un événement "Cleared" sur un système Alcatel OXE 4400. Voici les détails :
+
+Type de message : Event (A1)
+
+Longueur totale : 91 octets (5B)
+
+Invoke ID : 29175 (71F7 en hexadécimal)
+
+Event Type : 21 (Cleared)
+
+Cross Reference ID : 19EC
+
+Informations sur l'appel terminé :
+
+Cleared Call Device ID : 4347
+
+Clearing Device : 24151
+
+Connection State : 0 (Null)
+
+Cause : 48 (Normal Clearing)
+
+Timestamp : 2025-03-02 11:35:15Z
+
+Ce message indique qu'un appel impliquant le poste 24151 a été terminé normalement sur le système Alcatel OXE 4400 le 2 mars 2025 à 11:35:15 UTC, soit il y a environ 10 minutes par rapport à l'heure actuelle que vous avez mentionnée (11:45).
+

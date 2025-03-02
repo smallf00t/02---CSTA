@@ -1,0 +1,427 @@
+00 DB A1 81 D8 02 02 29 E8 02 01 15 30 81 CE 55 
+04 01 35 F3 03 A0 7C A1 7A 30 78 6B 0A 82 02 2B 
+7A 83 04 08 B3 01 00 6B 0A 82 02 2B 7E 83 04 08 
+B3 01 00 63 07 84 05 32 34 31 30 33 63 06 82 04 
+30 30 31 37 30 4A A3 15 30 13 6B 0A 82 02 2B 82 
+83 04 08 B3 01 00 80 05 32 34 31 30 33 A3 14 30 
+12 6B 0A 82 02 2B 82 83 04 0B FE 01 04 80 04 30 
+30 31 37 A3 1B 30 19 6B 0A 82 02 2B 82 83 04 0B 
+FD 01 04 80 0B 30 30 37 38 39 36 31 36 30 30 34 
+4E 01 03 7E 48 A0 0F 17 0D 32 35 30 33 30 31 31 
+36 30 37 32 33 5A A1 35 30 0B 06 06 2B 0C 89 36 
+83 78 02 01 00 30 12 06 06 2B 0C 89 36 84 09 04 
+08 34 22 C3 67 75 2B 01 00 30 12 06 06 2B 0C 89 
+36 84 0A 04 08 63 22 C3 67 7E 2B 01 00 
+
+
+Le décodage ASN.1 du message CSTA fourni révèle un événement "Transferred" sur un système Alcatel OXE 4400. Voici les détails :
+
+Type de message : Event (A1)
+
+Longueur totale : 219 octets (DB)
+
+Invoke ID : 10728 (29E8 en hexadécimal)
+
+Event Type : 21 (Transferred)
+
+Cross Reference ID : 35F3
+
+Informations sur le transfert :
+
+Primary Old Call Device ID : 2B7A
+
+Secondary Old Call Device ID : 2B7E
+
+Transferring Device : 24103
+
+Transferred Device : 0017
+
+Connexions associées :
+
+Device ID : 2B82, Call ID : 24103
+
+Device ID : 2B82, Call ID : 0017
+
+Device ID : 2B82, Call ID : 007896160004
+
+Connection State : 3 (Connected)
+
+Cause : 72 (Transfer)
+
+Timestamp : 2025-03-01 16:07:23Z
+
+Ce message indique qu'un appel a été transféré du poste 24103 au numéro 0017 sur le système Alcatel OXE 4400 il y a environ 19 heures. L'appel impliquait également un numéro externe 007896160004
+
+
+00 5B A1 59 02 02 2A 30 02 01 15 30 50 55 04 01 
+35 F3 03 A0 1F A2 1D 30 1B 6B 0A 82 02 2B 82 83 
+04 08 B3 01 00 63 07 84 05 32 34 31 30 33 4E 01 
+00 0A 01 30 7E 27 A0 0F 17 0D 32 35 30 33 30 31 
+31 36 30 38 32 37 5A A1 14 30 12 06 06 2B 0C 89 
+36 84 09 04 08 34 22 C3 67 75 2B 01 00 
+
+Le décodage ASN.1 du message CSTA fourni révèle un événement "Cleared" sur un système Alcatel OXE 4400. Voici les détails :
+
+Type de message : Event (A1)
+
+Longueur totale : 91 octets (5B)
+
+Invoke ID : 10800 (2A30 en hexadécimal)
+
+Event Type : 21 (Cleared)
+
+Cross Reference ID : 35F3
+
+Informations sur l'appel terminé :
+
+Cleared Call Device ID : 2B82
+
+Clearing Device : 24103
+
+Connection State : 0 (Null)
+
+Cause : 48 (Normal Clearing)
+
+Timestamp : 2025-03-01 16:08:27Z
+
+Ce message indique qu'un appel impliquant le poste 24103 a été terminé normalement sur le système Alcatel OXE 4400 le 1er mars 2025 à 16:08:27 UTC, soit environ une minute après l'événement de transfert précédent.
+
+00 71 A1 6F 02 02 2A 64 02 01 15 30 66 55 04 01 
+3A 9C 03 A0 35 A3 33 30 31 6B 0A 82 02 2B 91 83 
+04 09 16 01 00 63 07 84 05 32 34 36 35 30 61 07 
+84 05 32 34 31 30 35 62 07 84 05 32 34 36 34 30 
+64 02 88 00 4E 01 03 0A 01 16 7E 27 A0 0F 17 0D 
+32 35 30 33 30 31 31 36 30 39 34 32 5A A1 14 30 
+12 06 06 2B 0C 89 36 84 09 04 08 36 23 C3 67 91 
+2B 01 00 
+
+
+Le décodage ASN.1 du message CSTA fourni révèle un événement "Connected" sur un système Alcatel OXE 4400. Voici les détails :
+
+Type de message : Event (A1)
+
+Longueur totale : 113 octets (71)
+
+Invoke ID : 10852 (2A64 en hexadécimal)
+
+Event Type : 21 (Connected)
+
+Cross Reference ID : 3A9C
+
+Informations sur l'appel connecté :
+
+Primary Old Call Device ID : 2B91
+
+Calling Device : 24650
+
+Called Device : 24105
+
+Connecting Device : 24640
+
+Connection State : 3 (Connected)
+
+Cause : 22 (Normal)
+
+Timestamp : 2025-03-01 16:09:42Z
+
+Ce message indique qu'un appel a été connecté entre les postes 24650 (appelant) et 24105 (appelé), avec 24640 comme poste de connexion, sur le système Alcatel OXE 4400 le 1er mars 2025 à 16:09:42 UTC. Cet événement s'est produit environ une minute après l'événement de terminaison précédent, suggérant une nouvelle connexion établie peu après la fin de l'appel précédent.
+
+00 8D A1 81 8A 02 02 24 27 02 01 15 30 81 80 55 
+04 01 35 F3 03 A0 42 A5 40 30 3E 6B 0A 82 02 2A 
+CE 83 04 0B FF 01 04 63 0E 82 0C 30 30 30 32 33 
+38 32 32 31 38 31 35 61 07 84 05 32 34 31 30 33 
+62 0D 82 0B 30 30 32 33 38 32 32 31 38 31 35 64 
+02 88 00 4E 01 03 0A 01 2E 7E 34 A0 0F 17 0D 32 
+35 30 33 30 31 31 35 34 31 35 32 5A A1 21 30 0B 
+06 06 2B 0C 89 36 83 78 02 01 01 30 12 06 06 2B 
+0C 89 36 84 09 04 08 AF 1C C3 67 CE 2A 01 00 
+
+Le décodage ASN.1 du message CSTA fourni révèle un événement "Established" sur un système Alcatel OXE 4400. Voici les détails :
+
+Type de message : Event (A1)
+
+Longueur totale : 141 octets (8D)
+
+Invoke ID : 9255 (2427 en hexadécimal)
+
+Event Type : 21 (Established)
+
+Cross Reference ID : 35F3
+
+Informations sur l'appel établi :
+
+Established Connection Device ID : 2ACE
+
+Calling Device : 000238221815
+
+Called Device : 24103
+
+Connecting Device : 00238221815
+
+Connection State : 3 (Connected)
+
+Cause : 46 (Network congestion)
+
+Timestamp : 2025-03-01 15:41:52Z
+
+Ce message indique qu'un appel a été établi entre le numéro externe 000238221815 (appelant) et le poste interne 24103 (appelé) sur le système Alcatel OXE 4400 le 1er mars 2025 à 15:41:52 UTC, soit environ 20 heures avant l'heure actuelle. L'appel a été connecté malgré une indication de congestion réseau.
+
+00 5B A1 59 02 02 24 C1 02 01 15 30 50 55 04 01 
+D2 65 03 A0 1F A7 1D 30 1B 6B 0A 82 02 2A D8 83 
+04 08 B4 01 00 63 07 84 05 32 34 31 30 34 4E 01 
+04 0A 01 25 7E 27 A0 0F 17 0D 32 35 30 33 30 31 
+31 35 34 33 35 39 5A A1 14 30 12 06 06 2B 0C 89 
+36 84 09 04 08 AC 1C C3 67 CD 2A 01 00 
+
+Le décodage ASN.1 du message CSTA fourni révèle un événement "Delivered" sur un système Alcatel OXE 4400. Voici les détails :
+
+Type de message : Event (A1)
+
+Longueur totale : 91 octets (5B)
+
+Invoke ID : 9409 (24C1 en hexadécimal)
+
+Event Type : 21 (Delivered)
+
+Cross Reference ID : D265
+
+Informations sur l'appel livré :
+
+Connection Device ID : 2AD8
+
+Calling Device : 24104
+
+Connection State : 4 (Alerting)
+
+Cause : 37 (Redirect)
+
+Timestamp : 2025-03-01 15:43:59Z
+
+Ce message indique qu'un appel a été livré au poste 24104 sur le système Alcatel OXE 4400 le 1er mars 2025 à 15:43:59 UTC, soit environ 20 heures avant l'heure actuelle. L'état de connexion "Alerting" suggère que le téléphone est en train de sonner, et la cause "Redirect" indique que l'appel a été redirigé vers ce poste.
+
+00 72 A1 70 02 02 28 AC 02 01 15 30 67 55 04 01 
+3A 9C 03 A0 29 A8 27 30 25 6B 0A 82 02 2B 63 83 
+04 0B FC 01 04 63 02 87 00 62 0D 82 0B 30 30 36 
+35 39 37 33 32 31 32 32 4E 01 03 0A 01 16 7E 34 
+A0 0F 17 0D 32 35 30 33 30 31 31 36 30 30 34 32 
+5A A1 21 30 0B 06 06 2B 0C 89 36 83 78 02 01 00 
+30 12 06 06 2B 0C 89 36 84 09 04 08 1A 21 C3 67 
+63 2B 01 00 
+
+e décodage ASN.1 du message CSTA fourni révèle un événement "Originated" sur un système Alcatel OXE 4400. Voici les détails :
+
+Type de message : Event (A1)
+
+Longueur totale : 114 octets (72)
+
+Invoke ID : 10412 (28AC en hexadécimal)
+
+Event Type : 21 (Originated)
+
+Cross Reference ID : 3A9C
+
+Informations sur l'appel initié :
+
+Originating Device ID : 2B63
+
+Calling Device : (non spécifié)
+
+Called Device : 00659732122
+
+Connection State : 3 (Connected)
+
+Cause : 22 (Normal)
+
+Timestamp : 2025-03-01 16:00:42Z
+
+Ce message indique qu'un appel a été initié vers le numéro externe 00659732122 sur le système Alcatel OXE 4400 le 1er mars 2025 à 16:00:42 UTC, soit environ 19 heures et 30 minutes avant l'heure actuelle. L'état de connexion "Connected" suggère que l'appel a été établi avec succès.
+
+00 6A A1 68 02 02 28 E2 02 01 15 30 5F 55 04 01 
+3A 9C 03 A0 2E A9 2C 30 2A 6B 0A 82 02 2B 69 83 
+04 08 B5 01 00 61 07 84 05 32 34 31 30 35 62 0D 
+82 0B 30 30 36 35 39 37 33 32 31 32 32 4E 01 03 
+0A 01 16 7E 27 A0 0F 17 0D 32 35 30 33 30 31 31 
+36 30 31 33 39 5A A1 14 30 12 06 06 2B 0C 89 36 
+84 09 04 08 53 21 C3 67 69 2B 01 00 
+
+Le décodage ASN.1 du message CSTA fourni révèle un événement "Established" sur un système Alcatel OXE. Voici les détails :
+
+Type de message : Event (A1)
+
+Longueur totale : 106 octets (6A)
+
+Invoke ID : 10466 (28E2 en hexadécimal)
+
+Event Type : 21 (Established)
+
+Cross Reference ID : 3A9C
+
+Informations sur l'appel établi :
+
+Established Connection Device ID : 2B69
+
+Calling Device : 24105
+
+Called Device : 00659732122
+
+Connection State : 3 (Connected)
+
+Cause : 22 (Normal)
+
+Timestamp : 2025-03-01 16:01:39Z
+
+00 58 A1 56 02 02 3C 5C 02 01 15 30 4D 55 04 01 
+15 99 02 A0 1C AB 1A 30 18 6B 0A 82 02 2D C5 83 
+04 02 62 01 04 63 07 84 05 37 35 33 30 32 4E 01 
+03 7E 27 A0 0F 17 0D 32 35 30 33 30 31 31 37 33 
+32 35 35 5A A1 14 30 12 06 06 2B 0C 89 36 84 09 
+04 08 77 36 C3 67 C5 2D 01 00 
+
+Le décodage ASN.1 du message CSTA fourni révèle un événement "Held" sur un système Alcatel OXE 4400. Voici les détails :
+
+Type de message : Event (A1)
+
+Longueur totale : 88 octets (58)
+
+Invoke ID : 15452 (3C5C en hexadécimal)
+
+Event Type : 21 (Held)
+
+Cross Reference ID : 1599
+
+Informations sur l'appel mis en attente :
+
+Connection Device ID : 2DC5
+
+Holding Device : 75302
+
+Connection State : 3 (Connected)
+
+Timestamp : 2025-03-01 17:32:55Z
+
+Ce message indique qu'un appel a été mis en attente par le poste 75302 sur le système Alcatel OXE 4400 le 1er mars 2025 à 17:32:55 UTC, soit environ 18 heures avant l'heure actuelle.
+
+00 4F A1 4D 02 02 3C 6D 02 01 15 30 44 55 04 01 
+D2 65 03 A0 13 AC 11 30 0F 6B 0A 82 02 2D CB 83 
+04 08 B4 01 00 4E 01 01 7E 27 A0 0F 17 0D 32 35 
+30 33 30 31 31 37 33 33 30 31 5A A1 14 30 12 06 
+06 2B 0C 89 36 84 09 04 08 BD 36 C3 67 CB 2D 01 
+00 
+
+Le décodage ASN.1 du message CSTA fourni révèle un événement "Retrieved" sur un système Alcatel OXE 4400. Voici les détails :
+
+Type de message : Event (A1)
+
+Longueur totale : 79 octets (4F)
+
+Invoke ID : 15469 (3C6D en hexadécimal)
+
+Event Type : 21 (Retrieved)
+
+Cross Reference ID : D265
+
+Informations sur l'appel récupéré :
+
+Connection Device ID : 2DCB
+
+Connection State : 1 (Initiated)
+
+Timestamp : 2025-03-01 17:33:01Z
+
+Ce message indique qu'un appel précédemment mis en attente a été récupéré sur le système Alcatel OXE 4400 le 1er mars 2025 à 17:33:01 UTC, soit environ 18 heures avant l'heure actuelle. Cet événement s'est produit 6 secondes après l'événement "Held" précédent, ce qui suggère que l'appel a été rapidement repris après avoir été mis en attente.
+
+00 C2 A1 81 BF 02 02 3C 8E 02 01 15 30 81 B5 55 
+04 01 15 99 02 A0 63 AD 61 30 5F 6B 0A 82 02 2D 
+C5 83 04 08 CD 01 00 63 07 84 05 37 35 33 30 32 
+63 0E 82 0C 30 30 30 36 30 35 39 33 37 39 37 38 
+30 35 A3 1C 30 1A 6B 0A 82 02 2D CE 83 04 02 62 
+01 04 80 0C 30 30 30 36 30 35 39 33 37 39 37 38 
+A3 15 30 13 6B 0A 82 02 2D CE 83 04 08 CD 01 00 
+80 05 32 34 31 35 33 4E 01 03 7E 48 A0 0F 17 0D 
+32 35 30 33 30 31 31 37 33 33 32 31 5A A1 35 30 
+0B 06 06 2B 0C 89 36 83 78 02 01 0B 30 12 06 06 
+2B 0C 89 36 84 09 04 08 77 36 C3 67 C5 2D 01 00 
+30 12 06 06 2B 0C 89 36 84 0A 04 08 77 36 C3 67 
+C5 2D 01 00 
+
+Le décodage ASN.1 du message CSTA fourni révèle un événement "Transferred" sur un système Alcatel OXE 4400. Voici les détails :
+
+Type de message : Event (A1)
+
+Longueur totale : 194 octets (C2)
+
+Invoke ID : 15502 (3C8E en hexadécimal)
+
+Event Type : 21 (Transferred)
+
+Cross Reference ID : 1599
+
+Informations sur le transfert :
+
+Primary Old Call Device ID : 2DC5
+
+Transferring Device : 75302
+
+Transferred Device : 000605937978
+
+Connection 1:
+
+Device ID : 2DCE
+
+Associated Number : 000605937978
+
+Connection 2:
+
+Device ID : 2DCE
+
+Associated Number : 24153
+
+Connection State : 3 (Connected)
+
+Timestamp : 2025-03-01 17:33:21Z
+
+Ce message indique qu'un appel a été transféré sur le système Alcatel OXE 4400 le 1er mars 2025 à 17:33:21 UTC, soit environ 18 heures avant l'heure actuelle. Le transfert a été effectué par le poste 75302, impliquant le numéro externe 000605937978 et le poste interne 24153. Cet événement s'est produit 20 secondes après l'événement "Retrieved" précédent, suggérant que l'appel a été transféré peu après avoir été repris de l'attente.
+
+00 64 A1 62 02 02 0F 76 02 01 15 30 59 55 04 01
+69 6A 02 A0 28 A4 26 30 24 6B 0A 82 02 47 07 83
+04 0C 7E 01 00 63 07 84 05 32 34 30 30 35 63 07
+84 05 32 34 37 36 30 4E 01 00 0A 01 1C 7E 27 A0
+0F 17 0D 32 35 30 33 30 32 31 34 31 33 35 34 5A
+A1 14 30 12 06 06 2B 0C 89 36 84 09 04 08 92 59
+C4 67 07 47 01 00
+Réponse
+Le décodage ASN.1 du message CSTA fourni révèle un événement "Diverted" sur un système Alcatel OXE 4400. Voici les détails :
+
+Type de message : Event (A1)
+
+Longueur totale : 100 octets (64)
+
+Invoke ID : 3958 (0F76 en hexadécimal)
+
+Event Type : 21 (Diverted)
+
+Cross Reference ID : 696A
+
+Informations sur l'appel dévié :
+
+Connection Device ID : 4707
+
+Diverting Device : 24005
+
+New Destination : 24760
+
+Connection State : 0 (Null)
+
+Cause : 28 (Call Forward Immediate)
+
+Timestamp : 2025-03-02 14:13:54Z
+
+Ce message indique qu'un appel a été dévié sur le système Alcatel OXE 4400 le 2 mars 2025 à 14:13:54 UTC, soit environ 5 minutes après l'événement de déviation précédent.
+
+Points notables :
+
+L'appel a été dévié du poste 24005 vers le poste 24760, impliquant de nouveaux postes par rapport aux événements précédents.
+
+La cause "Call Forward Immediate" suggère que cette déviation était probablement due à un renvoi d'appel immédiat configuré sur le poste 24005.
+
+L'état de connexion "Null" indique que la connexion originale a été terminée lors de la déviation.
